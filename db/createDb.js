@@ -74,6 +74,15 @@ await upload(db, 'db/moods.csv', `
 	from stdin
 	with csv header`);
 
+await upload(db, 'db/sang_eksempler.csv', `
+	copy tracks (id, activity_id, mood_id, title, artist, bpm)
+	from stdin
+	with csv header`);
+
+await upload(db, 'db/liked_fra_chat.csv', `
+	copy preferences (id, user_id, track_id, liked)
+	from stdin
+	with csv header`);
 
 console.log('Data imported.');
 
