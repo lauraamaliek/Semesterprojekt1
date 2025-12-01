@@ -36,3 +36,17 @@ function renderCurrentTrack(partyId, track) {
     contentDiv.textContent = `Party ${partyId} is now listening to ${track.title} by ${track.artist}`
 }
 
+const nextBtn = document.getElementById('nextBtn');
+const nameInput = document.getElementById('nameInput');
+
+nextBtn.addEventListener('click', () => {
+    const name = nameInput.value.trim();
+    if(name) {
+        // Gem navnet i localStorage
+        localStorage.setItem('userName', name);
+        // Gå videre til greeting.html
+        window.location.href = 'greeting.html';
+    } else {
+        alert('Skriv venligst dit navn!');
+    }
+});
