@@ -47,6 +47,6 @@ nextBtn.addEventListener('click', () => {
         // Gå videre til greeting.html
         window.location.href = 'greeting.html';
     } else {
-        alert('Skriv venligst dit navn!');
+        alert('Please enter your name!');
     }
 });
