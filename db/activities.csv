@@ -1,13 +1,13 @@
-id,name,description
-1,Wake Up,Morning routine and getting ready for the day
-2,Commute,Traveling to school, work, or other destinations
-3,Study,Focused study session or school work
-4,Work,General work time or project work
-5,Workout,Exercise, fitness training or sports
-6,Shower,Midday break for eating and relaxing
-7,Deep Work,High-focus work without interruptions
-8,Relax,Resting, taking a break or unwinding
-9,Cooking,Preparing meals in the afternoon or evening
-10,Evening Chill,Relaxing or winding down after the day
-11,Social,Time spent with friends, family or social activities
-12,Party,Parties, nightlife or larger social gatherings
+id,name
+1,Wake Up
+2,Commute
+3,Study
+4,Work
+5,Workout
+6,Lunch Break
+7,Deep Work
+8,Relax,Resting
+9,Cooking
+10,Evening Chill
+11,Social
+12,Party

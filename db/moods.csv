@@ -1,21 +1,41 @@
-id,name,is_default,activity_id
-1,Groggy,true,1
-2,Motivated,false,1
-3,Calm,true,2
-4,Annoyed,false,2
-5,Focused,true,3
-6,Productive,true,4
-7,Energetic,true,5
-8,Hungry,true,6
-9,Concentrated,true,7
-10,Relaxed,true,8
-11,Creative,false,9
-12,Chill,true,10
-13,Social,true,11
-14,Excited,true,12
-15,Playful,false,12
-16,Tired,false,10
-17,Reflective,false,8
-18,Adventurous,false,5
-19,Happy,true,11
-20,Romantic,false,10
+id,name
+1,Groggy
+2,Motivated
+3,Calm
+4,Annoyed
+5,Focused
+6,Productive
+7,Energetic
+8,Hungry
+9,Concentrated
+10,Relaxed
+11,Creative
+12,Chill
+13,Social
+14,Excited
+15,Playful
+16,Tired
+17,Reflective
+18,Adventurous
+19,Happy
+20,Romantic
+21,Lo-fi Chill
+22,Indie
+23,Hyped Up
+24,Soft Pop
+25,Low Energy
+26,R&B Vibes
+27,Stressed Out
+28,Deep Focus
+29,Upbeat Pop
+30,Mellow
+31,Trap Energy
+32,Overthinking
+33,Calm Rap
+34,Good Vibes
+35,Heavy Thoughts
+36,Feel-Good Indie
+37,Emo Rap
+38,Weekend
+39,Ambient Focus
+40,Soft & Sleepy
