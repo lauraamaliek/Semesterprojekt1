@@ -9,14 +9,6 @@ function goToNextPage() {
     window.location.href = "greeting.html";
 }
 
-// Når greeting.html loader, sæt teksten
-window.onload = function () {
-    const name = localStorage.getItem("username");
-
-    if (name) {
-        document.getElementById("greeting").textContent = "Godmorgen " + name;
-    }
-}
 
 // ###############################
 //   SKIFT MELLEM DARK OG LIGHT
