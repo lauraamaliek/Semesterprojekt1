@@ -1,51 +1,71 @@
-id,activity_id,mood_id,title,artist,bpm
-1,5,7,Wake Me Up,Avicii,124 
-2,5,7,Timber,Pitbull ft. Ke$ha,130
-3,5,7,Can't Hold Us,Macklemore & Ryan Lewis,146
-4,5,7,Rock and Roll,Led Zeppelin,169 
-5,5,7,Happy,Pharrell Williams,160
-6,5,7,Need U 100%,Duke Dumont ft. A*M*E,124
-7,5,7,Animals,Martin Garrix,128
-8,5,7,Applause,Lady Gaga,140
-9,4,6,Stronger,Kanye West,104
-10,11,13,Get Lucky,Daft Punk ft. Pharrell Williams,116
-11,2,3,Tennis Court,Lorde,90
-12,8,10,Fix You,Coldplay,60
-13,12,14,Love Shack,The B-52’s,134
-14,12,14,I'm Good (Blue),David Guetta & Bebe Rexha,128
-15,11,13,Rather Be,Clean Bandit ft. Jess Glynne,121
-16,11,13,Head & Heart,Joel Corry & MNEK,123
-17,6,8,Everywhere,Fleetwood Mac,115
-18,6,8,So Good,B.o.B,86
-19,3,5,Pure Shores,All Saints,101
-20,3,5,Be the One,Dua Lipa,87
-21,10,12,Love Me Again,John Newman,126
-22,12,14,Do It Right,Anne‑Marie,130
-23,5,7,The Motto,Tiësto & Ava Max,118
-24,5,7,Spicy Margarita,Jason Derulo & Michael Bublé,130
-25,11,13,Love Grows (Where My Rosemary Goes),SMYLES,115
-26,4,6,Black Skinhead,Kanye West,130 
-27,5,7,Whatever You Like,TI,150 
-28,5,7,All I Do Is Win,DJ Khaled,150 
-29,5,7,Lean With It,Dem Franchise Boyz,152 
-30,8,10,Rehab,Amy Winehouse,72
-31,2,3,In Da Club,50 Cent,90
-32,8,10,Stayin' Alive,Bee Gees,104
-33,12,14,I Gotta Feeling,Black Eyed Peas,128
-34,11,13,Don't Stop Me Now,Queen,155
-35,9,11,Happy Together,The Turtles,120
-36,9,11,Hallelujah,Jeff Buckley,56
-37,7,9,Time to Say Goodbye,Andrea Bocelli & Sarah Brightman,58
-38,4,6,Work,Jimmy Eat World,107
-39,1,1,Here Comes the Sun,The Beatles,129
-40,1,2,Beautiful Day,U2,136
-41,12,14,Party Rock Anthem,LMFAO,130
-42,11,13,Counting Stars,OneRepublic,122
-43,5,7,Power,Swedish House Mafia,128
-44,5,7,Feel This Moment,Pitbull ft. Christina Aguilera,133
-45,10,12,Someone You Loved,Lewis Capaldi,110
-46,8,10,When We Were Young,David Guetta & Kim Petras,140 
-47,6,8,Let It Be,The Beatles,72
-48,4,6,Demons,Imagine Dragons,90
-49,11,13,Rather Be (Acoustic),Clean Bandit ft. Jess Glynne,77
-50,2,3,Fast Car,Jonas Blue ft. Dakota,113
+id,title,artist,bpm
+1,Wake Me Up,Avicii,124 
+2,Timber,Pitbull ft. Ke$ha,130
+3,Can't Hold Us,Macklemore & Ryan Lewis,146
+4,Rock and Roll,Led Zeppelin,169 
+5,Happy,Pharrell Williams,160
+6,Need U 100%,Duke Dumont ft. A*M*E,124
+7,Animals,Martin Garrix,128
+8,Applause,Lady Gaga,140
+9,Stronger,Kanye West,104
+10,Get Lucky,Daft Punk ft. Pharrell Williams,116
+11,Tennis Court,Lorde,90
+12,Fix You,Coldplay,60
+13,Love Shack,The B-52’s,134
+14,I'm Good (Blue),David Guetta & Bebe Rexha,128
+15,Rather Be,Clean Bandit ft. Jess Glynne,121
+16,Head & Heart,Joel Corry & MNEK,123
+17,Everywhere,Fleetwood Mac,115
+18,So Good,B.o.B,86
+19,Pure Shores,All Saints,101
+20,Be the One,Dua Lipa,87
+21,Love Me Again,John Newman,126
+22,Do It Right,Anne‑Marie,130
+23,The Motto,Tiësto & Ava Max,118
+24,Spicy Margarita,Jason Derulo & Michael Bublé,130
+25,Love Grows (Where My Rosemary Goes),SMYLES,115
+26,Black Skinhead,Kanye West,130 
+27,Whatever You Like,TI,150 
+28,All I Do Is Win,DJ Khaled,150 
+29,Lean With It,Dem Franchise Boyz,152 
+30,Rehab,Amy Winehouse,72
+31,In Da Club,50 Cent,90
+32,Stayin' Alive,Bee Gees,104
+33,I Gotta Feeling,Black Eyed Peas,128
+34,Don't Stop Me Now,Queen,155
+35,Happy Together,The Turtles,120
+36,Hallelujah,Jeff Buckley,56
+37,Time to Say Goodbye,Andrea Bocelli & Sarah Brightman,58
+38,Work,Jimmy Eat World,107
+39,Here Comes the Sun,The Beatles,129
+40,Beautiful Day,U2,136
+41,Party Rock Anthem,LMFAO,130
+42,Counting Stars,OneRepublic,122
+43,Power,Swedish House Mafia,128
+44,Feel This Moment,Pitbull ft. Christina Aguilera,133
+45,Someone You Loved,Lewis Capaldi,110
+46,When We Were Young,David Guetta & Kim Petras,140 
+47,Let It Be,The Beatles,72
+48,Demons,Imagine Dragons,90
+49,Rather Be (Acoustic),Clean Bandit ft. Jess Glynne,77
+50,Fast Car,Jonas Blue ft. Dakota,113
+51,Blinding Lights,The Weeknd,171
+52,Shape of You,Ed Sheeran,96
+53,Uptown Funk,Mark Ronson ft. Bruno Mars,115
+54,Closer,The Chainsmokers ft. Halsey,95
+55,Levitating,Dua Lipa,103
+56,Drivers License,Olivia Rodrigo,144
+57,Bad Guy,Billie Eilish,135
+58,Happier Than Ever,Billie Eilish,58
+59,Dance Monkey,Tones and I,98
+60,Old Town Road,Lil Nas X,136
+61,Watermelon Sugar,Harry Styles,95
+62,Sunflower,Post Malone & Swae Lee,90
+63,Peaches,Justin Bieber,90
+64,Save Your Tears,The Weeknd,118
+65,Stay,The Kid LAROI & Justin Bieber,170
+66,As It Was,Harry Styles,174
+67,Anti-Hero,Taylor Swift,97
+68,Good 4 U,Olivia Rodrigo,170
+69,Montero (Call Me By Your Name),Lil Nas X,89
+70,Shivers,Ed Sheeran,140
