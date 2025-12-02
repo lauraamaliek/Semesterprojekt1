@@ -17,3 +17,26 @@ window.onload = function () {
         document.getElementById("greeting").textContent = "Godmorgen " + name;
     }
 }
+
+// ###############################
+//   SKIFT MELLEM DARK OG LIGHT
+// ###############################
+
+function toggleDarkMode() {
+  // Toggle klassen "dark" på <html> elementet
+  // Hvis den er der → fjern den
+  // Hvis den ikke er der → tilføj den
+  document.documentElement.classList.toggle("dark");
+}
+
+
+
+// ###############################
+//   SKIFT FARVETEMA
+// ###############################
+
+function setTheme(theme) {
+  // Sætter data-attribute på <html>
+  // F.eks. data-color-theme="blue"
+  document.documentElement.setAttribute("data-color-theme", theme);
+}
