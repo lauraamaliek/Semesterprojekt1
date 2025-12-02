@@ -15,6 +15,40 @@
 <script src="activity.js"></script>
 </head>
 <body>
-    
+
+<div class="button-row">
+    <button onclick="go()">Wake Up</button>
+    <button onclick="go()">Commute</button>
+    <button onclick="go()">Study</button>
+    <button onclick="go()">Work</button>
+    <button onclick="go()">Workout</button>
+    <button onclick="go()">Lunch Break</button>
+    <button onclick="go()">Deep Work</button>
+    <button onclick="go()">Relax</button>
+    <button onclick="go()">Cooking</button>
+    <button onclick="go()">Evening Chill</button>
+    <button onclick="go()">Social</button>
+    <button onclick="go()">Party</button>
+</div>
+
+<script>
+function go() {
+    window.location.href = 'mood.html';
+}
+</script>
+
+<style>
+.button-row {
+    display: grid; /* et 'gitter' til at placere kanpperne i (rækker) */
+    grid-template-columns: repeat(4, 1fr); /* 4 knapper pr. række, samt lige mellemrum mellem alle knapper */
+    gap: 10px; /* mellemrummet mellem knapper */
+    margin: 0 auto; /* centrer grid i midten */
+
+}
+
+</style>
+
+</body>
+
 </body>
 </html>
