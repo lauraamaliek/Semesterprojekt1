@@ -10,6 +10,7 @@ await db.query(`drop table if exists activities,
 	moods,
 	users,
 	tracks,
+	mood_activity,
 	preferences`);
 
 console.log('All tables dropped.');
@@ -26,8 +27,7 @@ await db.query(`
 await db.query(`
     create table activities (
         id int primary key,
-	    name text not null,
-	    description text not null
+	    name text not null
     )
 `);
 
@@ -35,8 +35,6 @@ await db.query(`
     create table moods (
         id int primary key,
 	    name text not null,
-	    is_default boolean,
-		activity_id int references activities
     )
 `);
 
@@ -57,6 +55,13 @@ await db.query(`
 	    user_id int references users,
 		track_id bigint references tracks,
 		liked boolean
+    )
+`);
+
+await db.query(`
+    create table mood_activity (
+        activity_id int references activities,
+	    mood_id int references moods
     )
 `);
 
@@ -81,6 +86,11 @@ await upload(db, 'db/sang_eksempler.csv', `
 
 await upload(db, 'db/liked_fra_chat.csv', `
 	copy preferences (id, user_id, track_id, liked)
+	from stdin
+	with csv header`);
+
+await upload(db, 'db/mood_activity.csv', `
+	copy mood_activity (activity_id, mood_id)
 	from stdin
 	with csv header`);
 
