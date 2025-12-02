@@ -36,6 +36,8 @@ function renderCurrentTrack(partyId, track) {
     contentDiv.textContent = `Party ${partyId} is now listening to ${track.title} by ${track.artist}`
 }
 
+/*kode der husker navn til næste side*/
+
 const nextBtn = document.getElementById('nextBtn');
 const nameInput = document.getElementById('nameInput');
 
