@@ -5,15 +5,17 @@
     <link rel="icon" type="image/x-icon" href="daysync_logo.png">
     <link rel="stylesheet" href="styles.css">
 
-    <header>
-    Time: <live-clock></live-clock>
-    </header>
+
 
     <h1 id="greeting"></h1>
 
-
+    <script src="greeting.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+  <div id="clock">
+    <live-clock></live-clock>
+  </div>
 
 What's your vibe today? <br> <br>
     <button onclick="myFunction()">Choose Activity</button>
@@ -24,8 +26,5 @@ function myFunction() {
 }
 </script>
 
-
-<script src="greeting.js"></script>
-<script src="script.js"></script>
 </body>
 </html>

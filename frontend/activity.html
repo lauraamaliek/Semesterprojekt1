@@ -4,18 +4,19 @@
     <script src="clock.js" defer></script>
     <link rel="icon" type="image/x-icon" href="daysync_logo.png">
     <link rel="stylesheet" href="styles.css">
+    <script src="activity.js" defer></script>
 
-    <header>
-    Time: <live-clock></live-clock>
-    </header>
+
     Choose activity <br>
 
 <h2 id="activityText"></h2>
 
-<script src="activity.js"></script>
+
 </head>
 <body>
-
+  <div id="clock">
+    <live-clock></live-clock>
+  </div>
 <div class="button-row">
     <button onclick="go()">Wake Up</button>
     <button onclick="go()">Commute</button>
@@ -36,8 +37,6 @@ function go() {
     window.location.href = 'mood.html';
 }
 </script>
-
-</body>
 
 </body>
 
