@@ -3,7 +3,7 @@
         "Helvetica Neue", sans-serif;} /*font er standard styresystem font for enheden, de første 2 er mac font, 
         segoe ui er windows og resten er backup font*/
     
-
+/*stjerne foran gennemtvinger at font gælder for alt, selvom det står i body, div eller andet*/
     /* ################################# */
 /*           BASIS VARIABLER         */
 /* ################################# */
@@ -123,3 +123,12 @@ button:hover {
   opacity: 0.9; /* Lidt visuelt feedback */
 }
 
+#clock {
+    position: fixed;                     /* altid fast i hjørnet */
+    top: 1rem;                           /* afstand fra toppen */
+    left: 1rem;                          /* afstand fra venstre kant */
+    font-size: clamp(1rem, 2.5vw, 2rem); /* tilpasser fontstørrelsen mellem 1rem og 2rem afhængigt af skærmbredden */
+    padding: 0.5rem 1rem;                /* indvendig afstand */
+    border-radius: 5px;                  /* rundede hjørner */
+    z-index: 1000;                       /* altid ovenpå andre elementer */
+}
