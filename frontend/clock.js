@@ -12,7 +12,10 @@ class LiveClock extends HTMLElement {
 
     updateClock() {
         const now = new Date();
-        this.clockElement.textContent = now.toLocaleTimeString();
+        this.clockElement.textContent = now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
     }
 }
 
