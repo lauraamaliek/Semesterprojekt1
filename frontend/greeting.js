@@ -11,7 +11,7 @@ let text = "";
 
 // Bestem hilsen ud fra tidspunktet
 if (hour >= 6 && hour < 10) {
-    text = "Good morning";
+    text = "Goodmorning";
 } else if (hour >= 10 && hour < 14) {
     text = "Good day";
 } else if (hour >= 14 && hour < 18) {    
@@ -29,6 +29,6 @@ if (userName) {
     greeting.textContent = text;
 }
 
-function myFunction() {
+function goactivity() {
     window.location.href = 'activity.html';
 }
