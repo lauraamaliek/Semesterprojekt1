@@ -10,7 +10,6 @@ class LiveClock extends HTMLElement {
         this.updateClock();
         setInterval(() => this.updateClock(), 1000);
     }
-
     updateClock() {
         const now = new Date();
         this.clockElement.textContent = now.toLocaleTimeString([], {
