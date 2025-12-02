@@ -132,3 +132,11 @@ button:hover {
     border-radius: 5px;                  /* rundede hjørner */
     z-index: 1000;                       /* altid ovenpå andre elementer */
 }
+
+.button-row {
+    display: grid; /* et 'gitter' til at placere kanpperne i (rækker) */
+    grid-template-columns: repeat(4, 1fr); /* 4 knapper pr. række, samt lige mellemrum mellem alle knapper */
+    gap: 10px; /* mellemrummet mellem knapper */
+    margin: 0 auto; /* centrer grid i midten */
+
+}
