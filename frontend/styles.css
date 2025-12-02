@@ -1,12 +1,133 @@
 body {
-    background-color: #333;
+    /*background-color: #333;
     color: #ccc;
     font-family: monospace;
-    font-size: 16px;
+    font-size: 16px;*/
     
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", 
              Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
              "Helvetica Neue", sans-serif; /*font er standard styresystem font for enheden, de første 2 er mac font, 
              segoe ui er windows og resten er backup font*/
+    
+
+    /* ################################# */
+/*           BASIS VARIABLER         */
+/* ################################# */
+
+:root { /* Standardtema (light mode) */
+  --font-size: 16px; /* Basis fontstørrelse */
+
+  --background: #ffffff; /* Hvid baggrund */
+  --foreground: #0a0a0a; /* Sort tekst */
+
+  --card: #ffffff; /* Kort baggrund */
+  --card-foreground: #0a0a0a; /* Kort tekst */
+
+  --primary: #8b5cf6; /* Lilla primærfarve */
+  --primary-foreground: #ffffff; /* Tekst på primærfarve */
+
+  --border: #e5e5e5; /* Standard kantfarve */
+  --radius: 0.75rem; /* Runde hjørner */
+}
+
+/* ################################# */
+/*           FARVETEMAER             */
+/* ################################# */
+
+:root[data-color-theme="blue"] { /* Blåt tema */
+  --primary: #3b82f6;
+}
+
+:root[data-color-theme="green"] { /* Grønt tema */
+  --primary: #10b981;
+}
+
+:root[data-color-theme="grey"] { /* Gråt tema */
+  --primary: #6b7280;
+}
+
+:root[data-color-theme="beige"] { /* Beige/brunt tema */
+  --primary: #a67c52;
+}
+
+/* ################################# */
+/*              DARK MODE            */
+/* ################################# */
+
+.dark { /* Når .dark tilføjes til <html> */
+  --background: #0a0a0a; /* Sort baggrund */
+  --foreground: #fafafa; /* Lys tekst */
+
+  --card: #171717; /* Mørk kortbaggrund */
+  --card-foreground: #fafafa; /* Lys korttekst */
+
+  --primary: #a78bfa; /* Lys-lilla i dark mode */
+  --primary-foreground: #0a0a0a; /* Sort tekst på knappen */
+}
+
+/* ################################# */
+/*     GENERELT RESET OG LAYOUT      */
+/* ################################# */
+
+html {
+  font-size: var(--font-size); /* Gør fontstørrelsen nem at ændre */
+}
+
+body {
+  background: var(--background); /* Body baggrund følger tema */
+  color: var(--foreground); /* Tekstfarve følger tema */
+  font-family: system-ui, sans-serif; /* Moderne standard font */
+  margin: 0; /* Fjern default margin */
+  padding: 20px; /* Giv lidt luft */
+
+      /* NYE TILFØJELSER FOR CENTRERING */
+    display: flex;              /* Gør body til flex container */
+    justify-content: center;    /* Center horisontalt */
+    align-items: center;        /* Center vertikalt */
+    min-height: 100vh;          /* Sørger for, at body fylder hele højden */
+    flex-direction: column;     /* Sørger for, at elementer stables lodret */
+    text-align: center;         /* Valgfrit: centrerer tekst inde i elementer */
+}
+
+/* ################################# */
+/*            TYPOGRAFI              */
+/* ################################# */
+
+h1, h2, h3 {
+  margin-top: 0; /* Fjern ekstra topafstand */
+}
+
+/* ################################# */
+/*            KORT STYLING           */
+/* ################################# */
+
+.card {
+  background: var(--card); /* Variabel styret baggrund */
+  color: var(--card-foreground); /* Variabel styret tekstfarve */
+  padding: 20px; /* Indre afstand */
+  border: 1px solid var(--border); /* Kantfarve følger tema */
+  border-radius: var(--radius); /* Runde hjørner */
+  margin-top: 15px;
+}
+
+/* ################################# */
+/*            KNAPPER                 */
+/* ################################# */
+
+button {
+  background: var(--primary); /* Primærfarve */
+  color: var(--primary-foreground); /* Tekstfarve */
+  border: none; /* Fjern standard kant */
+  padding: 10px 16px; /* Indre afstand */
+  border-radius: var(--radius); /* Runde hjørner */
+  cursor: pointer; /* Klikbar */
+  font-size: 1rem; /* Normal tekststørrelse */
+  margin: 5px; /* Lille mellemrum mellem knapper */
+}
+
+button:hover {
+  opacity: 0.9; /* Lidt visuelt feedback */
+}
+
 
 }
