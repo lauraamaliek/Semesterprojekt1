@@ -4,13 +4,6 @@ const userName = localStorage.getItem('userName');
 // Find h1-elementet
 const greeting = document.getElementById('greeting');
 
-// Sæt tekst ind
-if (userName) {
-    greeting.textContent = `Godmorgen ${userName}!`;
-} else {
-    greeting.textContent = 'Godmorgen!';
-}
-
 // Find nuværende time
 const hour = new Date().getHours();
 
