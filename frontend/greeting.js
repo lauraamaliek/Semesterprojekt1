@@ -28,3 +28,7 @@ if (userName) {
 } else {
     greeting.textContent = text;
 }
+
+function myFunction() {
+    window.location.href = 'activity.html';
+}
