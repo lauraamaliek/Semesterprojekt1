@@ -148,7 +148,7 @@ button:hover {
   margin: 40px auto; /* Centrerer containeren */
   padding: 40px;
   color: white;
-  background: #0e0e0e;
+  background: #ffffff;
   font-family: sans-serif;
   border-radius: 20px; /* Giver containeren afrundede hjørner */
   box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* Lidt skygge for dybde */
