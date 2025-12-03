@@ -56,7 +56,6 @@ async function getAllActivities() {
 
         //laver knappen som et DOM-element 
         const button = document.createElement("button"); //opretter knappen 
-        button.classList.add("button-row"); //tilføjer til class=button-row
         button.dataset.id=activity.id;
         button.innerText=activity.name; //viser aktivitets-navn på knappen
 
