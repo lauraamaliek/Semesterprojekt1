@@ -16,6 +16,7 @@ server.use(onEachRequest);
 
 server.get('/api/moods/:activityID', OnGetMoods); // Når klikker på en aktivitet (henter moods)
 server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
+server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter
 
 server.listen(port, onServerReady);
 
@@ -44,6 +45,16 @@ async function getActivityId(request, response) {
     response.json(result.rows[0]);
 }
 
+async function getAllActivities(request, response) {
+    const result = await db.query(`
+        SELECT *
+        FROM activities
+        ORDER BY id ASC`);
+    response.json(result.rows);
+}
+
+
+//Mikkels kode som SKAL være her for at det fungerer 
 
 function onEachRequest(request, response, next) {
     console.log(new Date(), request.method, request.url);
