@@ -11,3 +11,5 @@ if (userName) {
 function go() {
     window.location.href = 'mood.html';
 }
+
+app.get

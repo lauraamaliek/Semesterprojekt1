@@ -18,6 +18,23 @@ server.get('/api/party/:partyCode/currentTrack', onGetCurrentTrackAtParty);
 server.get(/\/[a-zA-Z0-9-_/]+/, onFallback); // serve index.html on any other simple path
 server.listen(port, onServerReady);
 
+server.get('/api/moods/:activityID', OnGetMoods); // Når klikker på en aktivitet (henter moods)
+
+
+
+async function OnGetMoods(request, response) { //Functionen der skal hente moods
+    const activity = request.params.activity; //
+    const moods = await db.query (`
+        SELECT id, name 
+        FROM moods 
+        JOIN mood_activity ON moods.id = mood_activity.mood_id
+        WHERE mood_activity.activity_id = $1 
+        `,[activity]); 
+    response.json(moods.rows); // hvorfor .rows?
+} 
+// Vend tilbage til = $1 
+
+
 async function onGetCurrentTrackAtParty(request, response) {
     const partyCode = request.params.partyCode;
     let trackIndex = currentTracks.get(partyCode);
