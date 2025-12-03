@@ -15,6 +15,7 @@ server.use(express.json());
 server.use(onEachRequest);
 
 server.get('/api/moods/:activityID', OnGetMoods); // Når klikker på en aktivitet (henter moods)
+server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
 
 server.listen(port, onServerReady);
 
@@ -31,6 +32,17 @@ async function OnGetMoods(request, response) { //Functionen der skal hente moods
     response.json(moods.rows); // hvorfor .rows?
 } 
 // Vend tilbage til = $1 
+
+//forsøg på at få navnet på en aktivitet husket til mood-siden
+async function getActivityId(request, response) {
+    const activity = parseInt(request.params.activityID);
+    const result = await db.query(`
+        SELECT * 
+        FROM activities
+        WHERE id=$1`, [activity]
+    );
+    response.json(result.rows[0]);
+}
 
 
 function onEachRequest(request, response, next) {
