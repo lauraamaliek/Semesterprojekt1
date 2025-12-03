@@ -65,6 +65,13 @@ await db.query(`
     )
 `);
 
+await db.query(`
+	create table song_mood (
+		song_id int references tracks, 
+		mood_id int references moods
+		)
+`);
+
 console.log('Tables recreated.');
 
 console.log('Importing data from CSV files...');
@@ -91,6 +98,11 @@ await upload(db, 'db/liked_fra_chat.csv', `
 
 await upload(db, 'db/mood_activity.csv', `
 	copy mood_activity (activity_id, mood_id)
+	from stdin
+	with csv header`);
+
+await upload(db, 'db/mood_mood.csv', `
+	copy song_mood (song_id, mood_id)
 	from stdin
 	with csv header`);
 
