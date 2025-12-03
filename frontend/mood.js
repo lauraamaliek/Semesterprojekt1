@@ -38,6 +38,19 @@ async function getActivityId() {
 
 getActivityId();
 
+document.addEventListener("DOMContentLoaded", ()=>{
+    const storedActivity = localStorage.getItem("selectedActivity");
+
+    if (storedActivity) {
+        const activity= JSON.parse(storedActivity);
+        const element = document.getElementById("activityText");
+
+        if (element && activity.name) {
+            element.textContent =`Perfect for ${activity.name}! Select moods to include:`;
+        }
+    } 
+});
+
 
 //forsøg på select/deselect - virker ikke, hvorfor vides ikke!!!
 document.addEventListener("click", e => {
