@@ -140,3 +140,196 @@ button:hover {
     margin: 0 auto; /* centrer grid i midten */
 
 }
+
+/* Container - nu med begrænset bredde og centreret */
+.player-container {
+  /* Fjern grid-layoutet, da det nu er en enkelt kolonne */
+  width: 380px; /* Sætter en fast bredde, som matcher album-coveret */
+  margin: 40px auto; /* Centrerer containeren */
+  padding: 40px;
+  color: white;
+  background: #0e0e0e;
+  font-family: sans-serif;
+  border-radius: 20px; /* Giver containeren afrundede hjørner */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* Lidt skygge for dybde */
+}
+
+/* Album Cover og Titel-sektion */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.album-cover {
+  width: 100%;
+  /* Gør coveret kvadratisk (1:1 højde/bredde) */
+  height: 380px; 
+  background: #1a1a1a; /* Mørkere grå baggrund */
+  border-radius: 10px;
+  margin-bottom: 20px;
+  /* Tilføjer placeholder-ikonet */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  color: #333;
+}
+.album-cover:after {
+    /* Dette kan erstattes med et rigtigt billede senere, men fungerer som en placeholder */
+    content: '🖼';
+}
+
+
+.track-info {
+  display: flex;
+  justify-content: space-between; /* Skubber info og like-knap ud til siden */
+  width: 100%;
+  align-items: flex-end; /* Justerer info med like-knap i bunden */
+  padding: 0 5px; /* Lidt padding for at matche mockup */
+}
+
+/* Gruppering af Titel og Artist */
+.title-artist-group {
+    display: flex; /* Gør det muligt at bruge flexbox */
+    flex-direction: column; /* Stabler h2 og p oven på hinanden */
+}
+
+.track-info h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+.track-info p {
+  margin-top: 4px;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.like-btn {
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: color 0.2s, opacity 0.2s;
+    /* Sikrer like-knappen er justeret med teksten */
+    padding-bottom: 2px;
+}
+/* Ny tilstand for når knappen er "liked" */
+.like-btn.liked {
+    color: red;
+    opacity: 1;
+}
+.like-btn:hover {
+    opacity: 1;
+}
+
+/* Tidslinje / Progress Bar */
+.playback-timeline {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  opacity: 0.6;
+  margin-top: 5px;
+}
+
+/* Fælles styling for alle sliders */
+input[type=range] {
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #333; /* Bagrgrundsfarve på "tom" del af slideren */
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Styling af sliderens "fyldte" del (progress-bar) */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #9d80ff; /* En lilla farve som i din mockup */
+}
+/* Progress Bar farve i Firefox */
+.progress-slider {
+    /* Firefox custom styling for progress bar farve */
+    background: linear-gradient(to right, #9d80ff 0%, #9d80ff var(--progress, 0%), #333 var(--progress, 0%), #333 100%);
+}
+
+
+/* Afspilningsknapper */
+.controls-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+.control-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.control-btn:hover {
+  opacity: 1;
+}
+.symbol {
+    /* For at sikre at symbolerne er ens størrelse */
+    display: inline-block;
+    width: 20px; 
+    text-align: center;
+}
+
+/* Den store play-knap - RETTET for perfekt centrering */
+.play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #9d80ff; 
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  
+  /* BRUG DENNE METODE */
+  display: grid;
+  place-items: center; /* Centrerer indholdet både vandret og lodret */
+}
+
+/* Ny styling for symbolet inde i knappen */
+.play-symbol {
+    font-size: 26px;
+    /* Flytter symbolet en lille smule til højre for optisk centrering */
+    transform: translateX(2px); 
+}
+
+/* Volumenkontrol */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+.volume-icon {
+    font-size: 22px;
+    opacity: 0.7;
+}
+
+.volume-slider {
+    /* Volumen-slider er typisk tyndere */
+    height: 3px; 
+    flex-grow: 1; /* Fylder den resterende plads */
+    background: linear-gradient(to right, white 0%, white var(--volume, 100%), #333 var(--volume, 100%), #333 100%);
+}
+.volume-slider::-webkit-slider-thumb {
+    background: white; /* Hvid knop til volumen */
+}

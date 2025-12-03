@@ -13,5 +13,58 @@
     <live-clock></live-clock>
     <a href="mood.html" style="text-decoration: none;">←</a>
   </div>
-</body>
-</html>
+
+<div class="player-container">
+
+  <div class="top-section">
+    <div class="album-cover" id="albumCover">
+      </div>
+
+    <div class="track-info">
+      <div class="title-artist-group">
+        <h2 id="trackTitle">Perfect Day</h2>
+        <p id="trackArtist">Various Artists</p>
+      </div>
+      <span class="like-btn" id="likeBtn">♡</span>
+    </div>
+  </div>
+
+
+  <div class="playback-timeline">
+    <input type="range" id="progressBar" value="0" min="0" max="100" class="progress-slider">
+    <div class="time-labels">
+      <span id="currentTime">0:00</span>
+      <span id="duration">4:15</span>
+    </div>
+  </div>
+
+
+<div class="controls-bottom">
+    <button class="control-btn" id="shuffleBtn">
+      <span class="symbol">🔀</span>
+    </button>
+    <button class="control-btn" id="prevBtn">
+      <span class="symbol">⏮</span>
+    </button>
+    
+    <button id="playBtn" class="play-btn">
+      <span class="play-symbol">▶</span> 
+    </button>
+    
+    <button class="control-btn" id="nextBtn">
+      <span class="symbol">⏭</span>
+    </button>
+    <button class="control-btn" id="repeatBtn">
+      <span class="symbol">🔁</span>
+    </button>
+</div>
+
+
+  <div class="volume-control">
+    <span class="symbol volume-icon">🔈</span>
+    <input type="range" id="volumeSlider" value="100" min="0" max="100" class="volume-slider">
+  </div>
+  
+</div>
+
+<audio id="audioPlayer"></audio>
