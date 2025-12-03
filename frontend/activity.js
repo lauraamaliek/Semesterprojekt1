@@ -13,8 +13,8 @@ function go() {
     window.location.href = 'mood.html';
 } */
 
-function ChooseActivity (id, name) {
-    localStorage.setItem("selectedActivity", JSON.stringify({id, name})); /*localstorage gemmer lokalt så det kan bruges på næste side, 
+function ChooseActivity (id) {
+    localStorage.setItem("selectedActivity", JSON.stringify({id})); /*localstorage gemmer lokalt så det kan bruges på næste side, 
     json.stringify gør objektet til en tekst*/
     window.location.href = 'mood.html';
 }
