@@ -9,6 +9,8 @@ async function loadMoods() { // henter data fra backend (derfor async)
     const moods = await response.json();
 
     const container = document.getElementById("button-row");
+    container.classList.add("button-row");
+
 
     for(let i = 0; i<moods.length; i++) {
         const mood = moods[i];
