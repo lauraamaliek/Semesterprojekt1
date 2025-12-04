@@ -1,10 +1,12 @@
-
-.body {
+body {
     font-family: Arial;
     background: #ffffff;
-    display: flow-root;
-    justify-content: center;
-    margin-top: 350px;
+    margin: 0;           /* fjern standard margin */
+    height: 100vh;       /* gør body højden 100% af viewport */
+    display: flex;       /* brug flexbox til placering */
+    align-items: center; /* centrer lodret */
+    justify-content: flex-start; /* placer til venstre */
+    padding-left: 20px;  /* afstand fra venstre kant */
 }
 
 .player {
@@ -12,32 +14,14 @@
     width: 350px;
     padding: 20px;
     border-radius: 20px;
+    max-height: 200px;
     box-shadow: 0 5px 20px rgba(168, 168, 168, 0.15);
 }
-
 .cover {
-    width: 300%;
+    width: 100%;
+    max-width: 300px; /* sætter et maksimum */
+    height: auto;     /* holder proportionerne */
     border-radius: 15px;
-}
-
-.song-info {
-    margin-top: 15px;
-}
-
-.controls {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#volume {
-    flex: 1;
-}
-
-.progress {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: block;
+    margin: 0 auto;   /* centrerer billedet i .player */
 }

@@ -19,35 +19,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Music Player</title>
-    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="play.css">
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Player</title>
+<style>
+body {
+    font-family: Arial;
+    background: #ffffff;
+    margin: 0;
+    height: 100vh;              /* hele højden af skærmen */
+    display: flex;
+    align-items: center;        /* centrer lodret */
+    justify-content: flex-start; /* placer player til venstre */
+    padding-left: 30px;         /* afstand fra venstre kant */
+}
+
+.player {
+    background: white;
+    width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    max-height: 500px;  /* lidt større for coverbillede */
+    box-shadow: 0 5px 20px rgba(168, 168, 168, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cover {
+    width: 100%;
+    max-width: 300px;  /* begræns bredden */
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin-bottom: 15px; /* afstand til song info */
+}
+
+.song-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+}
+
+.controls {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+#volume {
+    flex: 1;
+}
+
+.progress {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+</style>
 </head>
 <body>
 
 <div class="player">
-    <img id="cover" class="cover" src="cover.jpg" alt="Cover">
-
+    <img src="covervinyl.jpg" alt="Cover" class="cover">
+    
     <div class="song-info">
-        <h2 id="title">Sang titel</h2>
-        <p id="artist">Artist navn</p>
+        <h3>Sang Titel</h3>
+        <p>Artist Navn</p>
     </div>
 
-    <audio id="audio"></audio>
-
     <div class="controls">
-        <button id="playBtn">▶</button>
-        <button id="pauseBtn">⏸</button>
-
-        <input id="volume" type="range" min="0" max="1" step="0.01">
-
-        <button id="nextBtn">⏭</button>
+        <button>⏮</button>
+        <button>▶️</button>
+        <button>⏭</button>
+        <input type="range" id="volume" min="0" max="100">
     </div>
 
     <div class="progress">
-        <input id="progressBar" type="range" min="0" max="100" value="0">
-        <span id="time">0:00 / 0:00</span>
+        <span>0:00</span>
+        <input type="range" min="0" max="100">
+        <span>3:45</span>
     </div>
 </div>
 
-<script src="player.js"></script>
 </body>
 </html>
