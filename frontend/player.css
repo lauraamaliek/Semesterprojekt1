@@ -1,0 +1,43 @@
+
+.body {
+    font-family: Arial;
+    background: #ffffff;
+    display: flow-root;
+    justify-content: center;
+    margin-top: 350px;
+}
+
+.player {
+    background: white;
+    width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(168, 168, 168, 0.15);
+}
+
+.cover {
+    width: 300%;
+    border-radius: 15px;
+}
+
+.song-info {
+    margin-top: 15px;
+}
+
+.controls {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#volume {
+    flex: 1;
+}
+
+.progress {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
