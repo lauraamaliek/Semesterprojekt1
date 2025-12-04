@@ -57,6 +57,19 @@
 
   --primary: #a78bfa; /* Lys-lilla i dark mode */
   --primary-foreground: #0a0a0a; /* Sort tekst på knappen */
+
+  --secondary: #111827; /* Indsæt tekst her ...*/
+  --secondary-foreground: #e6eef8;
+
+  --border: rgba(255,255,255,0.04);
+  --shadow: 0 8px 30px rgba(2,6,23,0.6);
+
+  --muted: #9aa6bb;
+} 
+
+/* glidende transitions ved temaændring */
+:root, :root[data-theme="dark"] {
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
 /* ################################# */
@@ -170,4 +183,57 @@ button:hover {
 .mood-button.selected {
     background: var(--primary);
     color: var(--primary-foreground);
+}
+/* Demo til farve tema funktion */
+.demo-area{
+  max-width: 680px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--card-foreground);
+  box-shadow: var(--shadow);
+  margin-top: 18px;
+}
+
+
+/*TESTER til Temaændrer*/
+
+.palette-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  font-size: 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+#theme-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: var(--card);
+  color: var(--card-foreground);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 200px;
+}
+
+#theme-dropdown.open {
+  display: block;
+}
+
+.color-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--border);
 }

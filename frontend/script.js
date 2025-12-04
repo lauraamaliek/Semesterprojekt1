@@ -32,3 +32,5 @@ function setTheme(theme) {
   // F.eks. data-color-theme="blue"
   document.documentElement.setAttribute("data-color-theme", theme);
 }
+
+
