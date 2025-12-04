@@ -26,7 +26,7 @@ async function loadMoods() { // henter data fra backend (derfor async)
 
 loadMoods();
 
-//forsøg på at indsætte navnet på valgt aktivitet 
+/*forsøg på at indsætte navnet på valgt aktivitet virker ikke, fungerende kode står nedenfor
 async function getActivityId() {
     const id = JSON.parse(localStorage.getItem("selectedActivity"));
 
@@ -37,7 +37,9 @@ async function getActivityId() {
 }
 
 getActivityId();
+*/
 
+//her indsættes navnet på den valgte aktivitet
 document.addEventListener("DOMContentLoaded", ()=>{
     const storedActivity = localStorage.getItem("selectedActivity");
 

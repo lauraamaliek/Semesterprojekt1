@@ -8,7 +8,7 @@ if (userName) {
 } else {
     activityText.textContent = "What are you doing today?";
 }
-/*
+/* gammel kode, erstattet af koden nedenfor
 function go() {
     window.location.href = 'mood.html';
 } */
