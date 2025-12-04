@@ -140,7 +140,40 @@ button:hover {
     margin: 0 auto; /* centrer grid i midten */
 
 }
- body {
+
+/*.mood-button.selected {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+*/
+
+/* Skjul den rigtige checkbox */
+.mood-checkbox {
+    display: none;
+}
+
+/* Selve knappen (label) */
+.mood-button {
+    display: inline-block;
+    padding: 12px 18px;
+    margin: 6px;
+    border-radius: var(--radius);
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+/* Når mood er valgt */
+.mood-button.selected {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+/*Det er her knapperne bliver mærkelige*/
+body {
     font-family: Arial;
     background: #ffffff;
     display: flow-root;

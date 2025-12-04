@@ -2,7 +2,7 @@ function goplay() {
     window.location.href = 'play.html';
 }
 
-
+/*
 async function loadMoods() { // henter data fra backend (derfor async)
     console.log('Loading moods...');
 
@@ -50,8 +50,53 @@ async function loadMoods() { // henter data fra backend (derfor async)
             ${mood.name}
         </button>
         `;
-    }*/
+    }
+}*/
+
+async function loadMoods() {
+    console.log("Loading moods...");
+
+    const activity = JSON.parse(localStorage.getItem("selectedActivity"));
+
+    // Hent alle moods
+    const allMoodsResponse = await fetch(`/api/moods`);
+    const allMoods = await allMoodsResponse.json();
+
+    // Hent moods for aktiviteten (default)
+    const activityMoodsResponse = await fetch(`/api/moods/${activity.id}`);
+    const activityMoods = await activityMoodsResponse.json();
+
+    const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
+
+    const container = document.getElementById("button-row");
+    container.innerHTML = "";
+
+    allMoods.forEach(mood => {
+        const isDefault = defaultMoodIDs.has(mood.id);
+
+        container.innerHTML += `
+            <label class="mood-button ${isDefault ? "selected" : ""}">
+                <input 
+                    type="checkbox" 
+                    class="mood-checkbox"
+                    data-id="${mood.id}"
+                    ${isDefault ? "checked" : ""}
+                >
+                ${mood.name}
+            </label>
+        `;
+    });
+
+    // Toggle class når der klikkes
+    document.querySelectorAll(".mood-checkbox").forEach(cb => {
+        cb.addEventListener("change", () => {
+            cb.parentElement.classList.toggle("selected", cb.checked);
+        });
+    });
 }
+
+//loadMoods();
+
 
 loadMoods();
 
