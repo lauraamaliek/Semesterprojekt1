@@ -18,6 +18,8 @@ server.get('/api/moods/:activityID', OnGetMoodsOnActivty); // Når klikker på e
 server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
 server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter
 server.get('/api/moods', getAllMoods);
+server.get('/api/tracks-by-moods', getTracksByMoods);
+server.post('/api/tracks-by-moods-weighted', getTracksByMoodsWeighted);
 
 server.listen(port, onServerReady);
 
@@ -60,6 +62,64 @@ async function getAllMoods(request,response){
         FROM moods
     `);
     response.json(moods.rows);
+}
+
+
+//begyndelse på tracks-by-moods, altså at sange hentes efter hvilke moods der er valgt
+async function getTracksByMoods(request, response) {
+    try {
+        const { selectedMoods } = request.body; // forventer array af mood IDs fra frontend
+
+        if (!selectedMoods || selectedMoods.length === 0) {
+            return response.json([]); // ingen moods valgt
+        }
+
+        // Dynamisk placeholders til SQL
+        const placeholders = selectedMoods.map((_, i) => `$${i + 1}`).join(',');
+
+        const query = `
+            SELECT DISTINCT t.track_id, t.title, t.artist, t.duration
+            FROM tracks t
+            JOIN song_mood sm ON t.track_id = sm.song_id
+            WHERE sm.mood_id IN (${placeholders})
+        `;
+
+        const result = await db.query(query, selectedMoods);
+        response.json(result.rows); // returner listen af tracks
+    } catch (err) {
+        console.error(err);
+        response.status(500).json({ error: 'Server error' });
+    }
+}
+
+// denne funktion vægter sangene, så dem som findes blandt flere af de valgte moods prioriteres højere
+
+async function getTracksByMoodsWeighted(request, response) {
+    try {
+        const { selectedMoods } = request.body; // forventer array af mood IDs fra frontend
+
+        if (!selectedMoods || selectedMoods.length === 0) {
+            return response.json([]); // ingen moods valgt
+        }
+
+        const placeholders = selectedMoods.map((_, i) => `$${i + 1}`).join(',');
+
+        // Denne query tæller hvor mange gange hvert track matcher moods og sorterer efter antal matches
+        const query = `
+            SELECT t.track_id, t.title, t.artist, t.duration, COUNT(sm.mood_id) AS match_count
+            FROM tracks t
+            JOIN song_mood sm ON t.track_id = sm.song_id
+            WHERE sm.mood_id IN (${placeholders})
+            GROUP BY t.track_id
+            ORDER BY match_count DESC, RANDOM();
+        `;
+
+        const result = await db.query(query, selectedMoods);
+        response.json(result.rows); // returner tracks med de mest matchende først
+    } catch (err) {
+        console.error(err);
+        response.status(500).json({ error: 'Server error' });
+    }
 }
 
 

@@ -100,6 +100,50 @@ async function loadMoods() {
 
 loadMoods();
 
+//continue knap som er deaktiveret når der ikke er valgt moods 
+// Hent continue-knappen
+const continueBtn = document.getElementById("continueBtn");
+
+// Funktion til at opdatere knaptekst, gemme valgte moods og aktivere/deaktivere knappen
+function updateContinueButton() {
+    const selectedCheckboxes = document.querySelectorAll(".mood-checkbox:checked");
+    const selectedCount = selectedCheckboxes.length;
+
+    // Opdater knaptekst
+    continueBtn.textContent = `Continue${selectedCount > 0 ? ` with ${selectedCount} moods` : ""}`;
+
+    // Gem valgte moods i localStorage
+    const selectedMoodIds = Array.from(selectedCheckboxes).map(cb => cb.dataset.id);
+    localStorage.setItem("selectedMoods", JSON.stringify(selectedMoodIds));
+
+    // Deaktiver knap, hvis ingen moods er valgt
+    continueBtn.disabled = selectedCount === 0;
+}
+
+// Tilføj event listeners til eksisterende mood-checkboxes
+function attachMoodListeners() {
+    document.querySelectorAll(".mood-checkbox").forEach(cb => {
+        cb.addEventListener("change", () => {
+            cb.parentElement.classList.toggle("selected", cb.checked);
+            updateContinueButton();
+        });
+    });
+}
+
+// Klik-event til Continue-knappen
+continueBtn.addEventListener("click", () => {
+    if (!continueBtn.disabled) {
+        window.location.href = "play.html";
+    }
+});
+
+// Initialiser efter moods er loadet
+loadMoods().then(() => {
+    attachMoodListeners();
+    updateContinueButton(); // initial opdatering ved load
+});
+
+
 /*forsøg på at indsætte navnet på valgt aktivitet virker ikke, fungerende kode står nedenfor
 async function getActivityId() {
     const id = JSON.parse(localStorage.getItem("selectedActivity"));
@@ -134,3 +178,6 @@ document.addEventListener("click", e => {
         e.target.classList.toggle("selected");
     }
 });
+
+
+//continue knap 
