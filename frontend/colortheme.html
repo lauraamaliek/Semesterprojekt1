@@ -1,24 +1,21 @@
-<div id="theme-picker">
-    <button id="theme-toggle-btn" class="palette-btn">
-        🎨
-    </button>
+<div class="theme-menu">
+    <!-- Palette Button -->
+    <button id="theme-btn">🎨</button>
 
-    <div id="theme-dropdown">
-        <h4>Mode</h4>
+    <!-- Dropdown -->
+    <div id="theme-dropdown" class="hidden">
 
-        <div class="mode-options">
-            <button class="theme-mode" data-mode="light">🌞 Light</button>
-            <button class="theme-mode" data-mode="dark">🌙 Dark</button>
-        </div>
+        <!-- Dark mode toggle -->
+        <button onclick="toggleDarkMode()">Toggle Dark / Light</button>
 
-        <h4>Color Theme</h4>
+        <hr>
 
-        <div class="color-options">
-            <button class="color-option" data-theme="default" style="background:#8b5cf6"></button>
-            <button class="color-option" data-theme="blue" style="background:#3b82f6"></button>
-            <button class="color-option" data-theme="green" style="background:#10b981"></button>
-            <button class="color-option" data-theme="grey" style="background:#6b7280"></button>
-            <button class="color-option" data-theme="beige" style="background:#a67c52"></button>
-        </div>
+        <!-- Color themes -->
+        <button onclick="setTheme('default')">Default</button>
+        <button onclick="setTheme('blue')">Blue</button>
+        <button onclick="setTheme('green')">Green</button>
+        <button onclick="setTheme('grey')">Grey</button>
+        <button onclick="setTheme('beige')">Beige</button>
+
     </div>
 </div>

@@ -25,54 +25,6 @@
 }
 
 /* ################################# */
-/*           FARVETEMAER             */
-/* ################################# */
-
-:root[data-color-theme="blue"] { /* Blåt tema */
-  --primary: #3b82f6;
-}
-
-:root[data-color-theme="green"] { /* Grønt tema */
-  --primary: #10b981;
-}
-
-:root[data-color-theme="grey"] { /* Gråt tema */
-  --primary: #6b7280;
-}
-
-:root[data-color-theme="beige"] { /* Beige/brunt tema */
-  --primary: #a67c52;
-}
-
-/* ################################# */
-/*              DARK MODE            */
-/* ################################# */
-
-.dark { /* Når .dark tilføjes til <html> */
-  --background: #0a0a0a; /* Sort baggrund */
-  --foreground: #fafafa; /* Lys tekst */
-
-  --card: #171717; /* Mørk kortbaggrund */
-  --card-foreground: #fafafa; /* Lys korttekst */
-
-  --primary: #a78bfa; /* Lys-lilla i dark mode */
-  --primary-foreground: #0a0a0a; /* Sort tekst på knappen */
-
-  --secondary: #111827; /* Indsæt tekst her ...*/
-  --secondary-foreground: #e6eef8;
-
-  --border: rgba(255,255,255,0.04);
-  --shadow: 0 8px 30px rgba(2,6,23,0.6);
-
-  --muted: #9aa6bb;
-} 
-
-/* glidende transitions ved temaændring */
-:root, :root[data-theme="dark"] {
-  transition: background-color 200ms ease, color 200ms ease;
-}
-
-/* ################################# */
 /*     GENERELT RESET OG LAYOUT      */
 /* ################################# */
 
@@ -184,56 +136,39 @@ button:hover {
     background: var(--primary);
     color: var(--primary-foreground);
 }
-/* Demo til farve tema funktion */
-.demo-area{
-  max-width: 680px;
-  padding: 20px;
-  border-radius: var(--radius);
-  background: var(--card);
-  color: var(--card-foreground);
-  box-shadow: var(--shadow);
-  margin-top: 18px;
+
+/* ################################# */
+/*           FARVETEMAER             */
+/* ################################# */
+
+.theme-menu {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Sikrer at menuen ligger ovenpå */
 }
 
-
-/*TESTER til Temaændrer*/
-
-.palette-btn {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 10px 14px;
-  font-size: 20px;
-  border-radius: var(--radius);
+#theme-btn {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 50%;
   cursor: pointer;
+  font-size: 20px;
 }
 
 #theme-dropdown {
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 0;
+  margin-top: 8px;
   background: var(--card);
-  color: var(--card-foreground);
-  padding: 16px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  width: 200px;
-}
-
-#theme-dropdown.open {
-  display: block;
-}
-
-.color-options {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.color-option {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  cursor: pointer;
   border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+  min-width: 120px; /* Giver bedre layout */
+}
+
+.hidden {
+  display: none;
 }

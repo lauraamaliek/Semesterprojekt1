@@ -23,19 +23,5 @@ What's your vibe today? <br> <br>
     <button onclick="goactivity()">Choose Activity</button>
 
 
-
-    <div id="theme-switcher-container"></div>
-
-<script>
-fetch("/colortheme.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("theme-switcher-container").innerHTML = html;
-  });
-</script>
-
-<script src="/colortheme.js"></script>
-
-
 </body>
 </html>

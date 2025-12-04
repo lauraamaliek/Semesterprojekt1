@@ -10,27 +10,75 @@ function goToNextPage() {
 }
 
 
-// ###############################
-//   SKIFT MELLEM DARK OG LIGHT
-// ###############################
 
+// ####################################################
+//  LOAD GEMT TEMA (kører når siden åbnes)
+// ####################################################
+document.addEventListener("DOMContentLoaded", () => {
+    const savedMode = localStorage.getItem("mode");            // "light" eller "dark"
+    const savedColor = localStorage.getItem("colortheme");     // fx "blue", "green"
+
+    // Sæt dark/light mode
+    if (savedMode === "dark") {
+        document.documentElement.classList.add("dark");
+    }
+
+    // Sæt farvetema
+    if (savedColor) {
+        document.documentElement.setAttribute("data-color-theme", savedColor);
+    }
+
+    // Aktiver dropdown-menu
+    initThemeDropdown();
+});
+
+
+// ####################################################
+//  SKIFT MELLEM DARK OG LIGHT
+// ####################################################
 function toggleDarkMode() {
-  // Toggle klassen "dark" på <html> elementet
-  // Hvis den er der → fjern den
-  // Hvis den ikke er der → tilføj den
-  document.documentElement.classList.toggle("dark");
+    const html = document.documentElement;
+
+    html.classList.toggle("dark");
+
+    // Gem valg
+    const mode = html.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("mode", mode);
 }
 
 
-
-// ###############################
-//   SKIFT FARVETEMA
-// ###############################
-
+// ####################################################
+//  SKIFT FARVETEMA (accent color)
+// ####################################################
 function setTheme(theme) {
-  // Sætter data-attribute på <html>
-  // F.eks. data-color-theme="blue"
-  document.documentElement.setAttribute("data-color-theme", theme);
+    if (theme === "default") {
+        document.documentElement.removeAttribute("data-color-theme");
+        localStorage.setItem("colortheme", "");
+        return;
+    }
+
+    document.documentElement.setAttribute("data-color-theme", theme);
+    localStorage.setItem("colortheme", theme);
 }
 
 
+// ####################################################
+//  ÅBEN / LUK DROPDOWN (samlet funktion)
+// ####################################################
+function initThemeDropdown() {
+    const btn = document.getElementById("theme-btn");
+    const menu = document.getElementById("theme-dropdown");
+
+    if (!btn || !menu) return; // Hvis HTML ikke er loaded endnu
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+
+    // Luk dropdown hvis man klikker udenfor
+    document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && e.target !== btn) {
+            menu.classList.add("hidden");
+        }
+    });
+}
