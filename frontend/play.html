@@ -14,57 +14,40 @@
     <a href="mood.html" style="text-decoration: none;">←</a>
   </div>
 
-<div class="player-container">
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="player.css">
+</head>
+<body>
 
-  <div class="top-section">
-    <div class="album-cover" id="albumCover">
-      </div>
+<div class="player">
+    <img id="cover" class="cover" src="cover.jpg" alt="Cover">
 
-    <div class="track-info">
-      <div class="title-artist-group">
-        <h2 id="trackTitle">Perfect Day</h2>
-        <p id="trackArtist">Various Artists</p>
-      </div>
-      <span class="like-btn" id="likeBtn">♡</span>
+    <div class="song-info">
+        <h2 id="title">Sang titel</h2>
+        <p id="artist">Artist navn</p>
     </div>
-  </div>
 
+    <audio id="audio"></audio>
 
-  <div class="playback-timeline">
-    <input type="range" id="progressBar" value="0" min="0" max="100" class="progress-slider">
-    <div class="time-labels">
-      <span id="currentTime">0:00</span>
-      <span id="duration">4:15</span>
+    <div class="controls">
+        <button id="playBtn">▶</button>
+        <button id="pauseBtn">⏸</button>
+
+        <input id="volume" type="range" min="0" max="1" step="0.01">
+
+        <button id="nextBtn">⏭</button>
     </div>
-  </div>
 
-
-<div class="controls-bottom">
-    <button class="control-btn" id="shuffleBtn">
-      <span class="symbol">🔀</span>
-    </button>
-    <button class="control-btn" id="prevBtn">
-      <span class="symbol">⏮</span>
-    </button>
-    
-    <button id="playBtn" class="play-btn">
-      <span class="play-symbol">▶</span> 
-    </button>
-    
-    <button class="control-btn" id="nextBtn">
-      <span class="symbol">⏭</span>
-    </button>
-    <button class="control-btn" id="repeatBtn">
-      <span class="symbol">🔁</span>
-    </button>
+    <div class="progress">
+        <input id="progressBar" type="range" min="0" max="100" value="0">
+        <span id="time">0:00 / 0:00</span>
+    </div>
 </div>
 
-
-  <div class="volume-control">
-    <span class="symbol volume-icon">🔈</span>
-    <input type="range" id="volumeSlider" value="100" min="0" max="100" class="volume-slider">
-  </div>
-  
-</div>
-
-<audio id="audioPlayer"></audio>
+<script src="player.js"></script>
+</body>
+</html>
