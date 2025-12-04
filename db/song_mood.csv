@@ -1,4 +1,4 @@
-song_id, mood_id
+song_id,mood_id
 1,7
 1,2
 1,19
@@ -336,5 +336,3 @@ song_id, mood_id
 73,41
 74,41
 75,41
-
-
