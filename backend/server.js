@@ -14,15 +14,16 @@ server.use(express.static('frontend'));
 server.use(express.json());
 server.use(onEachRequest);
 
-server.get('/api/moods/:activityID', OnGetMoods); // Når klikker på en aktivitet (henter moods)
+server.get('/api/moods/:activityID', OnGetMoodsOnActivty); // Når klikker på en aktivitet (henter moods)
 server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
 server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter
+server.get('/api/moods', getAllMoods);
 
 server.listen(port, onServerReady);
 
 
 
-async function OnGetMoods(request, response) { //Functionen der skal hente moods
+async function OnGetMoodsOnActivty(request, response) { //Functionen der skal hente moods
     const activity = parseInt(request.params.activityID); //
     const moods = await db.query (`
         SELECT id, name 
@@ -51,6 +52,14 @@ async function getAllActivities(request, response) {
         FROM activities
         ORDER BY id ASC`);
     response.json(result.rows);
+}
+
+async function getAllMoods(request,response){
+    const moods = await db.query(`
+        SELECT id, name
+        FROM moods
+    `);
+    response.json(moods.rows);
 }
 
 
