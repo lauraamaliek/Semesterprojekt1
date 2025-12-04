@@ -1,0 +1,32 @@
+  <main> <!-- Hovedindhold -->
+
+    <section class="controls"> <!-- Område med knapper -->
+      <h2>Appearance Controls</h2>
+
+      <button onclick="toggleDarkMode()">Toggle Dark Mode</button> <!-- Skifter mellem mørk/lys -->
+      
+      <div class="theme-buttons"> <!-- Samling af tema-knapper -->
+        <button onclick="setTheme('blue')">Blue Theme</button>
+        <button onclick="setTheme('green')">Green Theme</button>
+        <button onclick="setTheme('grey')">Grey Theme</button>
+        <button onclick="setTheme('beige')">Beige Theme</button>
+      </div>
+    </section>
+
+    <section class="demo"> <!-- Område som viser hvordan temaet ser ud -->
+      <h2>Demo Content</h2>
+
+      <p>
+        Dette er et eksempel på tekst som automatisk følger det valgte tema.
+      </p>
+
+      <div class="card"> <!-- Eksempel kort som bruger CSS-variabler -->
+        <h3>Kort Komponent</h3>
+        <p>Dette kort bruger CSS variabler for baggrund, tekst og radius.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script> <!-- Importerer JavaScript-filen -->

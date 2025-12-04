@@ -41,8 +41,6 @@ getAllActivities()
 */
 
 
-//OBS!!!! der er noget med knappernes placering som ikke virker rigtigt. 
-
 async function getAllActivities() {
     const response = await fetch("/api/activities"); //henter fra api'en 
     const activities = await response.json(); //venter på svar fra backend
