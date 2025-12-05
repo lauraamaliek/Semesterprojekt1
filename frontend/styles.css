@@ -189,7 +189,9 @@ button:hover {
 }
 
 .player {
-    background: white;
+    
+  --background: #0a0a0a;
+  --foreground: #ffffff;
     width: 350px;
     padding: 20px;
     border-radius: 20px;
@@ -257,7 +259,8 @@ button:hover {
     width: 200px;
     margin-top: 80px; 
     font-family: Arial;
-    background: #f9f9f9;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
