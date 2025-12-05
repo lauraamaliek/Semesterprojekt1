@@ -79,9 +79,9 @@ async function getTracksByMoods(request, response) {
         const placeholders = selectedMoods.map((_, i) => `$${i + 1}`).join(',');
 
         const query = `
-            SELECT DISTINCT t.track_id, t.title, t.artist, t.duration
+            SELECT DISTINCT t.id, t.title, t.artist, t.duration
             FROM tracks t
-            JOIN song_mood sm ON t.track_id = sm.song_id
+            JOIN song_mood sm ON t.id = sm.song_id
             WHERE sm.mood_id IN (${placeholders})
         `;
 
@@ -107,11 +107,11 @@ async function getTracksByMoodsWeighted(request, response) {
 
         // Denne query tæller hvor mange gange hvert track matcher moods og sorterer efter antal matches
         const query = `
-            SELECT t.track_id, t.title, t.artist, t.duration, COUNT(sm.mood_id) AS match_count
+            SELECT t.id, t.title, t.artist, t.duration, COUNT(sm.mood_id) AS match_count
             FROM tracks t
-            JOIN song_mood sm ON t.track_id = sm.song_id
+            JOIN song_mood sm ON t.id = sm.song_id
             WHERE sm.mood_id IN (${placeholders})
-            GROUP BY t.track_id
+            GROUP BY t.id
             ORDER BY match_count DESC, RANDOM();
         `;
         // Konverter til tal her:
@@ -136,7 +136,7 @@ function onEachRequest(request, response, next) {
 function onServerReady() {
     console.log('Webserver running on port', port);
 }
-
+/*
 async function loadTracks() {
     const dbResult = await db.query(`
         select track_id, title, artist, duration
@@ -151,4 +151,4 @@ function pickNextTrackFor(partyCode) {
     const track = tracks[trackIndex];
     play(partyCode, track.track_id, track.duration, Date.now(), () => currentTracks.delete(partyCode));
     return trackIndex;
-}
+}*/

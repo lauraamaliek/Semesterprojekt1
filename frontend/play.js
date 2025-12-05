@@ -42,26 +42,7 @@ async function loadTracksForSelectedMoods() {
     }
 }
 
-// Vis tracks på siden
-function displayTracks(tracks) {
-    const trackList = document.getElementById("trackList");
-    trackList.innerHTML = "";
-
-    tracks.forEach(track => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            <strong>${track.title}</strong><br>
-            <em>${track.artist}</em><br>
-            Match: ${track.match_count}
-        `;
-        trackList.appendChild(li);
-    });
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-    loadTracksForSelectedMoods();
-});
-
+function playTrack(){}
 
 
 //så den vises på siden
@@ -74,7 +55,6 @@ function displayTracks(tracks) {
         li.innerHTML = `
             <strong>${track.title}</strong><br>
             <em>${track.artist}</em><br>
-            Match: ${track.match_count}
         `;
         trackList.appendChild(li);
     });

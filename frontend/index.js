@@ -1,4 +1,4 @@
-addEventListener("DOMContentLoaded", () => {
+/*addEventListener("DOMContentLoaded", () => {
     let partyCode = establishPartyCode();
     history.replaceState(null, '', partyCode);
     addEventListener('popstate', () => {
@@ -34,7 +34,7 @@ async function pollForCurrentTrackAt(partyCode) {
 function renderCurrentTrack(partyId, track) {
     const contentDiv = document.getElementById('content');
     contentDiv.textContent = `Party ${partyId} is now listening to ${track.title} by ${track.artist}`
-}
+}*/
 
 /*kode der husker navn til næste side*/
 
