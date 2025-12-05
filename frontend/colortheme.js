@@ -1,9 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("theme-btn");
-    const menu = document.getElementById("theme-dropdown");
+console.log("Toggle lukker");
 
-    // Toggle dropdown
-    btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-    });
+const btn = document.getElementById("theme-btn");
+const menu = document.getElementById("theme-dropdown");
+
+// Toggle dropdown
+btn.addEventListener("click", () => { 
+    console.log("hahaha");
+    menu.classList.toggle("hidden");
 });
