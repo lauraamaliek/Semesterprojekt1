@@ -29,6 +29,29 @@ if (userName) {
     greeting.textContent = text;
 }
 
+// ---------------------------
+// BILLEDE-STYRING
+// ---------------------------
+
+const img = document.getElementById("greeting-img"); // <- dit img element
+
+let imgSrc = "";
+
+// Vælg billede ud fra tidspunkt
+if (hour >= 6 && hour < 10) {
+    imgSrc = "goodmorging.png";
+} else if (hour >= 10 && hour < 14) {
+    imgSrc = "goodday.png";
+} else if (hour >= 14 && hour < 18) {
+    imgSrc = "goodafternoon.png";
+} else if (hour >= 18 && hour < 23) {
+    imgSrc = "goodevening.png";
+} else {
+    imgSrc = "goodnight.png";
+}
+
+img.src = imgSrc;
+
 function goactivity() {
     window.location.href = 'activity.html';
 }

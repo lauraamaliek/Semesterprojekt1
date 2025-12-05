@@ -4,25 +4,25 @@
     <script src="clock.js" defer></script>
     <link rel="icon" type="image/x-icon" href="daysync_logo.png">
     <link rel="stylesheet" href="styles.css">
-
-
-
-    <h1 id="greeting"></h1>
-
     <script src="greeting.js" defer></script>
     <script src="script.js" defer></script>
 </head>
+
 <body>
-  <div id="clock">
-    <live-clock></live-clock>
-    <a href="index.html" style="text-decoration: none;">←</a>
 
-  </div>
+    <!-- Hilsen -->
+    <h1 id="greeting"></h1>
 
-What's your vibe today? <br> <br>
+    <!-- Billede der skifter efter tidspunktet -->
+    <img id="greeting-img" src="" alt="Greeting image" style="width:200px; height:200px; object-fit:contain;">
+    
+    <div id="clock">
+        <live-clock></live-clock>
+        <a href="index.html" style="text-decoration: none;">←</a>
+    </div>
+
+    What's your vibe today? <br><br>
     <button onclick="goactivity()">Choose Activity</button>
 
-<div id="theme-switcher-container"></div>
-    
 </body>
 </html>
