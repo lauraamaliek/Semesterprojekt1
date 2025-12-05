@@ -10,7 +10,6 @@ function goToNextPage() {
 }
 
 
-
 // ####################################################
 //  LOAD GEMT TEMA (kører når siden åbnes)
 // ####################################################
@@ -77,8 +76,31 @@ function initThemeDropdown() {
 
     // Luk dropdown hvis man klikker udenfor
     document.addEventListener("click", (e) => {
-        if (!menu.contains(e.target) && e.target !== btn) {
+        if (!menu.classList.contains(hidden) && !menu.contains(e.target) && e.target !== btn) {
             menu.classList.add("hidden");
         }
     });
 }
+
+// ####################################################
+//  // Sørger for at theme-switcher-container findes på ALLE sider
+// ####################################################
+
+let container = document.getElementById("theme-switcher-container");
+
+if (!container) {
+  // Hvis div'en ikke findes, så opret og indsæt den i toppen af <body>
+  container = document.createElement("div");
+  container.id = "theme-switcher-container";
+  document.body.prepend(container); // indsætter øverst i body
+}
+
+// Hent HTML til theme switcher
+fetch("/colortheme.html")
+  .then(res => res.text())
+  .then(html => {
+    container.innerHTML = html;
+
+    // Load JS når HTML'en er indsat
+    import("/colortheme.js");
+  });
