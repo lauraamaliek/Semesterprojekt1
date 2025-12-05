@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simuleret Music Player</title>
+    <link rel="stylesheet" href="play.css">
     <script src="clock.js" defer></script>
     <link rel="icon" type="image/x-icon" href="daysync_logo.png">
     <link rel="stylesheet" href="styles.css">
     <script src="play.js" defer></script>
     <script src="script.js" defer></script>
+
+    
 
 </head>
 <body>
@@ -14,51 +20,46 @@
     <a href="mood.html" style="text-decoration: none;">←</a>
   </div>
 
-<!DOCTYPE html>
-<html lang="da">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simuleret Music Player</title>
-<link rel="stylesheet" href="play.css">
-</head>
-<body>
-
-<div class="player-container">
-    <!-- Player til venstre -->
-    <div class="player">
-        <img src="covervinyl.jpg" alt="Cover" class="cover">
+    <div class="player-container">
+        <!-- Player til venstre -->
+        <div class="player">
+            <img src="covervinyl.jpg" alt="Cover" class="cover">
         
-        <div class="song-info">
-            <h3 id="song-title">Sang Titel</h3>
-            <p id="song-artist">Artist Navn</p>
-        </div>
+            <div class="song-info">
+                <h3 id="song-title">Sang Titel</h3>
+                <p id="song-artist">Artist Navn</p>
+            </div>
 
-        <div class="controls">
-            <button id="prev">⏮</button>
-            <button id="play-btn">▶️</button>
-            <button id="next">⏭</button>
+            <div class="controls">
+                <button id="prev">⏮</button>
+                <button id="play-btn">▶️</button>
+                <button id="next">⏭</button>
 
-            <div class="volume-container">
-                <span class="volume-icon">🔊</span>
-                <input type="range" id="volume" min="0" max="100" value="50">
+                <div class="volume-container">
+                    <span class="volume-icon">🔊</span>
+                    <input type="range" id="volume" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <div class="progress">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                <span id="duration">3:45</span>
             </div>
         </div>
 
-        <div class="progress">
-            <span id="current-time">0:00</span>
-            <input type="range" id="progress-bar" min="0" max="100" value="0">
-            <span id="duration">3:45</span>
+        <!-- Next Track til højre -->
+        <div class="next-track">
+            <h4>Næste sange</h4>
+            <ul id="next-songs"></ul>
+
+
         </div>
     </div>
 
-    <!-- Next Track til højre -->
-    <div class="next-track">
-        <h4>Næste sange</h4>
-        <ul id="next-songs"></ul>
-    </div>
-</div>
+    <div id="trackList"></div>
 
-<script src="play.js"></script>
+    
+
 </body>
 </html>

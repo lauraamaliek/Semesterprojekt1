@@ -21,6 +21,7 @@ server.get('/api/moods', getAllMoods);
 server.get('/api/tracks-by-moods', getTracksByMoods);
 server.post('/api/tracks-by-moods-weighted', getTracksByMoodsWeighted);
 
+
 server.listen(port, onServerReady);
 
 
@@ -67,7 +68,7 @@ async function getAllMoods(request,response){
 
 //begyndelse på tracks-by-moods, altså at sange hentes efter hvilke moods der er valgt
 async function getTracksByMoods(request, response) {
-    try {
+    try {//bruges for at fange evt. fejl og derved undgå at siden crasher 
         const { selectedMoods } = request.body; // forventer array af mood IDs fra frontend
 
         if (!selectedMoods || selectedMoods.length === 0) {
@@ -113,8 +114,9 @@ async function getTracksByMoodsWeighted(request, response) {
             GROUP BY t.track_id
             ORDER BY match_count DESC, RANDOM();
         `;
-
-        const result = await db.query(query, selectedMoods);
+        // Konverter til tal her:
+        const result = await db.query(query, selectedMoods.map(Number));
+        //const result = await db.query(query, selectedMoods);
         response.json(result.rows); // returner tracks med de mest matchende først
     } catch (err) {
         console.error(err);

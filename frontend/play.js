@@ -1,89 +1,94 @@
-// -----------------------------
-// Hent HTML elementer
-// -----------------------------
-const titleEl = document.getElementById("songTitle");
-const artistEl = document.getElementById("songArtist");
-const playBtn = document.getElementById("playBtn");
-const timeEl = document.getElementById("time");
 
-// Variabler
-let songs = [];
-let currentSong = null;
-let timeInterval = null;
-let fakeTime = 0; // vi simulerer tiden
+// Hent tracks ud fra valgte moods
+async function loadTracksForSelectedMoods() {
+    console.log("Loading tracks based on selected moods...");
 
+    // Hent valgte moods fra localStorage og konverter til tal
+    let selectedMoods = JSON.parse(localStorage.getItem("selectedMoods"));
+    if (!selectedMoods || selectedMoods.length === 0) {
+        console.warn("No moods selected!");
+        document.getElementById("trackList").innerHTML = "<p>Vælg venligst et mood for at se sange.</p>";
+        return;
+    }
 
-// -----------------------------
-// Hent CSV fil
-// -----------------------------
-fetch("db/sang_eksempler.csv")
-  .then(res => res.text())
-  .then(csv => {
-    const rows = csv.split("\n").slice(1); // skip header
+    selectedMoods = selectedMoods.map(Number); // ✅ Konverter til tal
+    console.log("Selected moods (as numbers):", selectedMoods);
 
-    songs = rows.map(row => {
-      const [id, title, artist, bpm] = row.split(",");
-      return { id, title, artist, bpm };
-    });
+    try {
+        const response = await fetch('/api/tracks-by-moods-weighted', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ selectedMoods })
+        });
 
-    // Indlæs første sang
-    loadSong(songs[0]);
-  })
-  .catch(err => console.error("CSV fejl:", err));
+        if (!response.ok) {
+            throw new Error("Failed to fetch tracks");
+        }
 
+        const tracks = await response.json();
+        console.log("Tracks returned:", tracks);
 
-// -----------------------------
-// Function: Indlæs sang
-// -----------------------------
-function loadSong(song) {
-  currentSong = song;
+        // Render til UI
+        displayTracks(tracks);
 
-  titleEl.textContent = song.title;
-  artistEl.textContent = song.artist;
+        // Gem tracklist til videre brug
+        localStorage.setItem("currentTracklist", JSON.stringify(tracks));
 
-  resetTime();
+    } catch (err) {
+        console.error("Error loading tracks:", err);
+        document.getElementById("trackList").innerHTML = "<p>Fejl ved hentning af sange.</p>";
+    }
 }
 
+// Vis tracks på siden
+function displayTracks(tracks) {
+    const trackList = document.getElementById("trackList");
+    trackList.innerHTML = "";
 
-// -----------------------------
-// Play / Pause knap
-// -----------------------------
-playBtn.addEventListener("click", () => {
-  if (playBtn.dataset.state !== "playing") {
-    startTimer();
-    playBtn.dataset.state = "playing";
-    playBtn.textContent = "Pause";
-  } else {
-    stopTimer();
-    playBtn.dataset.state = "paused";
-    playBtn.textContent = "Play";
-  }
+    tracks.forEach(track => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <strong>${track.title}</strong><br>
+            <em>${track.artist}</em><br>
+            Match: ${track.match_count}
+        `;
+        trackList.appendChild(li);
+    });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    loadTracksForSelectedMoods();
 });
 
 
-// -----------------------------
-// Timer simulation
-// -----------------------------
-function startTimer() {
-  stopTimer(); // undgå dobbelte intervaller
 
-  timeInterval = setInterval(() => {
-    fakeTime++;
+//så den vises på siden
+function displayTracks(tracks) {
+    const trackList = document.getElementById("trackList");
+    trackList.innerHTML = "";
 
-    let min = Math.floor(fakeTime / 60);
-    let sec = fakeTime % 60;
-    if (sec < 10) sec = "0" + sec;
-
-    timeEl.textContent = `${min}:${sec}`;
-  }, 1000);
+    tracks.forEach(track => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <strong>${track.title}</strong><br>
+            <em>${track.artist}</em><br>
+            Match: ${track.match_count}
+        `;
+        trackList.appendChild(li);
+    });
 }
 
-function stopTimer() {
-  clearInterval(timeInterval);
-}
 
-function resetTime() {
-  fakeTime = 0;
-  timeEl.textContent = "0:00";
-  stopTimer();
+window.addEventListener("DOMContentLoaded", () => {
+    loadTracksForSelectedMoods();
+});
+
+
+/*if (tracks.length > 0) {
+    const firstTrack = tracks[0];
+    playTrack(firstTrack);
 }
+*/
+

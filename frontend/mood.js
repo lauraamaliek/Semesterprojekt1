@@ -180,4 +180,5 @@ document.addEventListener("click", e => {
 });
 
 
-//continue knap 
+
+
