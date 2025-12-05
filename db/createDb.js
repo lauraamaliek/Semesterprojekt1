@@ -45,7 +45,8 @@ await db.query(`
         id bigint primary key,
 		title text,
 		artist text,
-		bpm int
+		bpm int,
+		duration text
     )
 `);
 
@@ -87,7 +88,7 @@ await upload(db, 'db/moods.csv', `
 	with csv header`);
 
 await upload(db, 'db/sang_eksempler.csv', `
-	copy tracks (id, title, artist, bpm)
+	copy tracks (id, title, artist, bpm, duration)
 	from stdin
 	with csv header`);
 
