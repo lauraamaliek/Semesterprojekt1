@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simuleret Music Player</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="play.css">
     <link rel="icon" type="image/x-icon" href="photos/daysync_logo.png">
     <link rel="stylesheet" href="styles.css">
@@ -29,22 +30,26 @@
                 <p id="song-artist">Artist Navn</p>
             </div>
 
-            <div class="controls">
-                <button id="prev">⏮</button>
-                <button id="play-btn">▶️</button>
-                <button id="next">⏭</button>
-
-                <div class="volume-container">
-                    <span class="volume-icon">🔊</span>
-                    <input type="range" id="volume" min="0" max="100" value="50">
+            <div class="progress">
+                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                <div class="song-time">
+                <span id="current-time">0:00</span>
+                <span id="song-duration">3:45</span>
                 </div>
             </div>
 
-            <div class="progress">
-                <span id="current-time">0:00</span>
-                <input type="range" id="progress-bar" min="0" max="100" value="0">
-                <span id="song-duration">3:45</span>
+            <div class="controls">
+                <button class="button-nobg" id="prev"><span class="material-symbols-outlined">skip_previous</span></button>
+                <button id="play-btn"><span class="material-symbols-outlined">play_arrow</span></button>
+                <button class="button-nobg" id="next"><span class="material-symbols-outlined">skip_next</span></button>
             </div>
+
+                <div class="volume-container">
+                    <span class="volume-icon"><span class="material-symbols-outlined">volume_up</span></span>
+                    <input type="range" id="volume" min="0" max="100" value="50">
+                </div>
+
+
         </div>
 
         <!-- Next Track til højre -->

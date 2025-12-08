@@ -161,6 +161,9 @@ button:hover {
   position: fixed;
   top: 10px;
   right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 /* Pallete emoji/knappen (Colortheme)*/
 #theme-btn {
@@ -172,6 +175,8 @@ button:hover {
   cursor: pointer;
   font-size: 20px;
 }
+
+
 /* Knapperne med farver inde i Colortheme*/
 #color-btn {
   background: var(--primary); /* Primærfarve */
@@ -184,6 +189,35 @@ button:hover {
   margin: 5px; /* Lille mellemrum mellem knapper */
 }
 
+.blue{
+  background-color: lightblue !important;
+}
+
+.green{
+  background-color: lightseagreen !important;
+}
+
+.grey{
+  background-color: silver !important;
+}
+
+.beige{
+  background-color: beige !important;
+}
+
+.color-button{
+  height: 32px;
+  width: 32px;
+  border-radius: 10px !important;
+  padding: 0 !important;
+
+}
+
+.color-container{
+  display: flex;
+  flex-direction: row;
+}
+
 /* Dropdown af knapperne inde i Colortheme*/
 #theme-dropdown {
   margin-top: 8px;
@@ -194,8 +228,9 @@ button:hover {
   display: grid;
   gap: 6px;
   min-width: 120px; /* Giver bedre layout */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* Dropdown starter gemt når man indlæser siden*/
 #theme-dropdown.hidden {
@@ -217,21 +252,15 @@ button:hover {
   --background: #0a0a0a;
   --foreground: #ffffff;
     width: 350px;
-    padding: 20px;
     border-radius: 20px;
-    max-height: 500px;
-    box-shadow: 0 5px 20px rgba(168, 168, 168, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin-left: 100px;  
-    margin-top: 80px;    
+   
 }
 
 .cover {
-    width: 100%;
-    max-width: 300px;  
+    width: 100%;  
     height: auto;
     border-radius: 15px;
     display: block;
@@ -242,6 +271,30 @@ button:hover {
     width: 100%;
     text-align: center;
     margin-top: 0;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.song-info h3{
+  font-size: 1.875rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.song-info p{
+  font-size: 18px;
+  color: #a3a3a3;
+  padding: 0;
+  margin: 0;
+}
+
+.song-time{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .controls {
@@ -250,6 +303,22 @@ button:hover {
     align-items: center;
     gap: 10px;
     width: 100%;
+    justify-content: center;
+}
+
+#play-btn{
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-nobg{
+  background-color: transparent !important;
+  padding: 0;
 }
 
 .volume-container {
@@ -257,6 +326,7 @@ button:hover {
     align-items: center;
     gap: 5px;
     flex: 1;
+    width: 100%;
 }
 
 .volume-icon {
@@ -270,18 +340,20 @@ button:hover {
 .progress {
     margin-top: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     width: 100%; 
 }
-
+#progress-bar{
+  width: 100%;
+}
 .progress input[type=range] {
     flex: 1; 
 }
 
 .next-track {
     width: 200px;
-    margin-top: 80px; 
     font-family: Arial;
   --background: #0a0a0a;
   --foreground: #ffffff;
