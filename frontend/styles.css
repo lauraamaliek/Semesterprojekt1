@@ -385,3 +385,8 @@ button:hover {
     padding: 5px 0;
     border-bottom: 1px solid #ddd;
 }
+/* Til hvor queue ikonet placeres, og et gap mellem de to men ved ikke om det gør noget den er der?*/
+.Queue-container {
+    display: flex;
+    gap: 6px; /* lille afstand mellem ikon og tekst */
+}
