@@ -1,4 +1,4 @@
-//ur på alle sider:
+//Ur på alle sider:
 //klokken
 class LiveClock extends HTMLElement {
     constructor() {
@@ -19,58 +19,32 @@ class LiveClock extends HTMLElement {
         });
     }
 }
-
 customElements.define("live-clock", LiveClock);
-// ####################################################
-//  LOAD GEMT TEMA (kører når siden åbnes)
-// ####################################################
-document.addEventListener("DOMContentLoaded", () => {
-    const savedMode = localStorage.getItem("mode");            // "light" eller "dark"
-    const savedColor = localStorage.getItem("colortheme");     // fx "blue", "green"
-
-    // Sæt dark/light mode
-    if (savedMode === "dark") {
-        document.documentElement.classList.add("dark");
-    }
-
-    // Sæt farvetema
-    if (savedColor) {
-        document.documentElement.setAttribute("data-color-theme", savedColor);
-    }
-
-    // Aktiver dropdown-menu
-    initThemeDropdown();
-});
 
 
 // ####################################################
-//  SKIFT MELLEM DARK OG LIGHT
+//  SKIFT MELLEM DARK OG LIGHT - Lavede lige en til hver så Light kun giver light og omvendt
 // ####################################################
-function toggleDarkMode() {
+
+function setLightMode() {
     const html = document.documentElement;
 
-    html.classList.toggle("dark");
+    // Hvis allerede light, gør den ingenting
+    if (!html.classList.contains("dark")) return;
 
-    // Gem valg
-    const mode = html.classList.contains("dark") ? "dark" : "light";
-    localStorage.setItem("mode", mode);
+    html.classList.remove("dark");
+    localStorage.setItem("mode", "light");
 }
 
+function setDarkMode() {
+    const html = document.documentElement;
 
-// ####################################################
-//  SKIFT FARVETEMA (accent color)
-// ####################################################
-function setTheme(theme) {
-    if (theme === "default") {
-        document.documentElement.removeAttribute("data-color-theme");
-        localStorage.setItem("colortheme", "");
-        return;
-    }
+    // Hvis allerede dark, gør den ingenting
+    if (html.classList.contains("dark")) return;
 
-    document.documentElement.setAttribute("data-color-theme", theme);
-    localStorage.setItem("colortheme", theme);
+    html.classList.add("dark");
+    localStorage.setItem("mode", "dark");
 }
-
 
 // ####################################################
 //  ÅBEN / LUK DROPDOWN (samlet funktion)
@@ -106,7 +80,7 @@ if (!container) {
   document.body.prepend(container); // indsætter øverst i body
 }
 
-// Hent HTML til theme switcher
+// Henter HTML til theme switcher
 fetch("/colortheme.html")
   .then(res => res.text())
   .then(html => {
@@ -116,4 +90,33 @@ fetch("/colortheme.html")
     import("/colortheme.js");
   });
 
-  
+  // Farve tema på knapperne når man trykker på dem (Det virker nu 😃)
+
+  function setTheme(color) {
+    const root = document.documentElement;
+
+    if (color === "default") {
+        root.style.setProperty("--primary", "#8b5cf6");
+        root.style.setProperty("--primary-foreground", "#000");
+    }
+
+    if (color === "blue") {
+        root.style.setProperty("--primary", "lightblue");
+        root.style.setProperty("--primary-foreground", "#000");
+    }
+
+    if (color === "green") {
+        root.style.setProperty("--primary", "lightgreen");
+        root.style.setProperty("--primary-foreground", "#000");
+    }
+
+    if (color === "grey") {
+        root.style.setProperty("--primary", "lightgray");
+        root.style.setProperty("--primary-foreground", "#000");
+    }
+
+    if (color === "beige") {
+        root.style.setProperty("--primary", "bisque");
+        root.style.setProperty("--primary-foreground", "#000");
+    }
+}

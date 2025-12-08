@@ -10,22 +10,24 @@
     <!-- Dropdown -->
     <div id="theme-dropdown" class="hidden">
   
-        
-
+        Mode
         <!-- Dark mode toggle -->
-         <div class="mode-container">
-        <button onclick="toggleDarkMode()"><span class="material-symbols-outlined">wb_sunny</span>Light</button>
-        <button onclick="toggleDarkMode()"><span class="material-symbols-outlined">bedtime</span>Dark</button>
-    
+        <div class="mode-container">
+            <button class="mode-btn" onclick="setLightMode()"><span class="material-symbols-outlined">wb_sunny</span>Light</button>
+            <button class="mode-btn" onclick="setDarkMode()"><span class="material-symbols-outlined">bedtime</span>Dark
+  </button>
+</div>
 
-
+        Color Theme
 
         <!-- Color themes -->
          <div class="color-container">
-            <button class="blue color-button" id="color-btn" onclick="setTheme('blue')"></button>
-            <button class="green color-button" id="color-btn" onclick="setTheme('green')"></button>
-            <button class="grey color-button" id="color-btn" onclick="setTheme('grey')"></button>
-            <button class="beige color-button" id="color-btn" onclick="setTheme('beige')"></button>
+             <button class="color-button default" onclick="setTheme('default')"></button>
+            <button class="color-button blue" onclick="setTheme('blue')"></button>
+            <button class="color-button green" onclick="setTheme('green')"></button>
+            <button class="color-button grey" onclick="setTheme('grey')"></button>
+            <button class="color-button beige" onclick="setTheme('beige')"></button>
+         </div>
         </div>
     </div>
 </div>

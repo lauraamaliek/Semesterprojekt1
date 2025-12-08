@@ -36,7 +36,7 @@
   --background: #0a0a0a;
   --foreground: #ffffff;
   --card: #000000; /* Kort baggrund - når man trykker på dark mode*/
-  --card-foreground: #ffffff; /* Kort tekst - Når man trykker på dark mode*/
+  --card-foreground: #000000; /* Kort tekst - Når man trykker på dark mode*/
   --primary-foreground: #ffffff;
 }
 
@@ -157,6 +157,19 @@ button:hover {
 /*           FARVETEMAER             */
 /* ################################# */
 
+/*Light/Dark knapper (jeg ville gerne have en anden btn til dem 😃)*/
+.mode-btn {
+  padding: 6px 24px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+/* Ikonerne på Light/Dark (Størrelse)*/
+.mode-btn .material-symbols-outlined {
+  font-size: 16px;
+  vertical-align: left;
+}
+
 /* Placering af menuen på siden (Colortheme)*/
 .theme-menu {
   position: fixed;
@@ -177,17 +190,10 @@ button:hover {
   font-size: 20px;
 }
 
+/* Fandt lige ud af at når man trykker på farvetema knappen altid sort, må blive fixet på et andet tidspunkt*/
 
-/* Knapperne med farver inde i Colortheme*/
-#color-btn {
-  background: var(--primary); /* Primærfarve */
-  color: var(--primary-foreground); /* Tekstfarve */
-  border: none; /* Fjern standard kant */
-  padding: 10px 16px; /* Indre afstand */
-  border-radius: var(--radius); /* Runde hjørner */
-  cursor: pointer; /* Klikbar */
-  font-size: 1rem; /* Normal tekststørrelse */
-  margin: 5px; /* Lille mellemrum mellem knapper */
+.default{
+  background-color: #8b5cf6 !important;
 }
 
 .blue{
@@ -206,19 +212,15 @@ button:hover {
   background-color: beige !important;
 }
 
+/*Knapperne inde i containeren*/
 .color-button{
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
   border-radius: 10px !important;
   padding: 0 !important;
-
 }
 
-.color-container{
-  display: flex;
-  flex-direction: row;
-}
-
+/* Placering af container på siden*/
 .color-container{
   display: flex;
   flex-direction: row;
@@ -236,14 +238,10 @@ button:hover {
   min-width: 120px; /* Giver bedre layout */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.button-nobg{
-  background-color: transparent !important;
-  padding: 0;
-}
-/* Dropdown starter gemt når man indlæser siden*/
+/* Dropdown starter gemt væk når man indlæser siden*/
 #theme-dropdown.hidden {
   display: none;
 }
@@ -366,8 +364,6 @@ button:hover {
 .next-track {
     width: 200px;
     font-family: Arial;
-  --background: #0a0a0a;
-  --foreground: #ffffff;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);

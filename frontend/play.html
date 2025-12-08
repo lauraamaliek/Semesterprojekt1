@@ -65,18 +65,26 @@
 
     <body>
 
-  <script>
-    const playBtn = document.getElementById("play-btn");
-    const playIcon = document.getElementById("play-icon");
+<!-- Function så Play/Pause knap/ikon virker, burde måske være i .JS? - 
+ Der er også lidt delay i Progressbaren, den hopper tilbage og så hen til derfra hvor den slap? -->
+ <script>
+const playBtn = document.getElementById("play-btn");
+const playIcon = document.getElementById("play-icon");
 
-    let isPlaying = false;
+let isPlaying = false;
 
-    playBtn.addEventListener("click", () => {
-      isPlaying = !isPlaying;
+playBtn.addEventListener("click", () => {
+    isPlaying = !isPlaying;
 
-      playIcon.textContent = isPlaying ? "pause" : "play_arrow";
-    });
-  </script>
+    if (isPlaying) {
+        playIcon.textContent = "pause";
+        startProgressBar();            // starter progressbaren
+    } else {
+        playIcon.textContent = "play_arrow";
+        clearInterval(progressInterval); // stopper progressbaren
+    }
+});
+</script>
 
 </body>
 

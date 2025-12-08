@@ -91,7 +91,7 @@ function startProgressBar() {
 
     if (progressInterval) clearInterval(progressInterval);
 
-    currentSecond = 0;
+    /*currentSecond = 0;*/ // Gør den starter forfra efter Play/Pause så kommateret den lige ud
     progressBar.value = 0;
 
     progressInterval = setInterval(() => {
@@ -149,12 +149,10 @@ function playNextTrack() {
 }
 
 
-
-/*giver liste af sange som passer til moods. 
-Bruges ikke lige nu, 
+/* giver liste af sange som passer til moods. Bruges ikke lige nu, 
 // Vis tracks på siden
 function displayTracks(tracks) {
-    const trackList = document.getElementById("trackList");
+    const trackList = document.getElementById("trackList"); //Heder TrackList i .HTML
     trackList.innerHTML = "";
 
     tracks.forEach(track => {
@@ -165,8 +163,7 @@ function displayTracks(tracks) {
         `;
         trackList.appendChild(li);
     });
-}
-*/
+} */
 
 window.addEventListener("DOMContentLoaded", () => {
     loadTracksForSelectedMoods();
