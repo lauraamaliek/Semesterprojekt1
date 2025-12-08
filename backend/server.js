@@ -68,6 +68,7 @@ async function getAllMoods(request,response){
 
 
 //begyndelse på tracks-by-moods, altså at sange hentes efter hvilke moods der er valgt
+//bruges ikke lige nu 
 async function getTracksByMoods(request, response) {
     try {//bruges for at fange evt. fejl og derved undgå at siden crasher 
         const { selectedMoods } = request.body; // forventer array af mood IDs fra frontend
