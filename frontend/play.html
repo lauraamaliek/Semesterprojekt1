@@ -40,7 +40,7 @@
 
             <div class="controls">
                 <button class="button-nobg" id="prev"><span class="material-symbols-outlined">skip_previous</span></button>
-                <button id="play-btn"><span class="material-symbols-outlined">play_arrow</span></button>
+                <button id="play-btn"><span id="play-icon" class="material-symbols-outlined">play_arrow</span></button>
                 <button class="button-nobg" id="next"><span class="material-symbols-outlined">skip_next</span></button>
             </div>
 
@@ -63,7 +63,22 @@
 
     <div id="trackList"></div>
 
-    
+    <body>
+
+  <script>
+    const playBtn = document.getElementById("play-btn");
+    const playIcon = document.getElementById("play-icon");
+
+    let isPlaying = false;
+
+    playBtn.addEventListener("click", () => {
+      isPlaying = !isPlaying;
+
+      playIcon.textContent = isPlaying ? "pause" : "play_arrow";
+    });
+  </script>
+
+</body>
 
 </body>
 </html>
