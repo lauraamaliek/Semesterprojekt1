@@ -1,8 +1,11 @@
+/* ################################# */
+/*           Font        */
+/* ################################# */
+
 *{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
         "Helvetica Neue", sans-serif;} /*font er standard styresystem font for enheden, de første 2 er mac font, 
         segoe ui er windows og resten er backup font*/
-    
 /*stjerne foran gennemtvinger at font gælder for alt, selvom det står i body, div eller andet*/
 
 /* ################################# */
@@ -14,27 +17,26 @@
 :root { /* Standardtema (light mode) */
   --font-size: 16px; /* Basis fontstørrelse */
 
-  --background: #ffffff; /* Hvid baggrund */
-  --foreground: #0a0a0a; /* Sort tekst */
+  --background: #ffffff; /* Hvid baggrund på alle sider (standard)*/
+  --foreground: #0a0a0a; /* Sort tekst på alle sider (standard)*/
 
-  --card: #ffffff; /* Kort baggrund */
-  --card-foreground: #0a0a0a; /* Kort tekst */
+  --card: #ffffff; /* Kort baggrund (til colortheme?)*/
+  --card-foreground: #0a0a0a; /* Kort tekst (colortheme?)*/
 
-  --primary: #8b5cf6; /* Lilla primærfarve */
-  --primary-foreground: #ffffff; /* Tekst på primærfarve */
+  --primary: #8b5cf6; /* Lilla primærfarve på knapper*/
+  --primary-foreground: #ffffff; /* Tekst på primærfarve på knapper */
 
-  --border: #e5e5e5; /* Standard kantfarve */
-  --radius: 0.75rem; /* Runde hjørner */
+  --border: #e5e5e5; /* Standard kantfarve (i colorthemeboksen) */
+  --radius: 0.75rem; /* Runde hjørner (på alle knapper) */
 }
 
-/* Når man trykker på knappen til Light/Dark Mode*/
-
+/* Når man trykker på knappen til Light/Dark Mode */
 :root.dark {
 
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --card: #ffffff; /* Kort baggrund */
-  --card-foreground: #0a0a0a; /* Kort tekst */
+  --card: #000000; /* Kort baggrund - når man trykker på dark mode*/
+  --card-foreground: #ffffff; /* Kort tekst - Når man trykker på dark mode*/
 }
 
 /* ################################# */
@@ -154,12 +156,13 @@ button:hover {
 /*           FARVETEMAER             */
 /* ################################# */
 
+/* Placering af menuen på siden (Colortheme)*/
 .theme-menu {
   position: fixed;
   top: 10px;
   right: 10px;
 }
-
+/* Pallete emoji/knappen (Colortheme)*/
 #theme-btn {
   background: var(--primary);
   color: var(--primary-foreground);
@@ -169,7 +172,19 @@ button:hover {
   cursor: pointer;
   font-size: 20px;
 }
+/* Knapperne med farver inde i Colortheme*/
+#color-btn {
+  background: var(--primary); /* Primærfarve */
+  color: var(--primary-foreground); /* Tekstfarve */
+  border: none; /* Fjern standard kant */
+  padding: 10px 16px; /* Indre afstand */
+  border-radius: var(--radius); /* Runde hjørner */
+  cursor: pointer; /* Klikbar */
+  font-size: 1rem; /* Normal tekststørrelse */
+  margin: 5px; /* Lille mellemrum mellem knapper */
+}
 
+/* Dropdown af knapperne inde i Colortheme*/
 #theme-dropdown {
   margin-top: 8px;
   background: var(--card);
@@ -182,10 +197,14 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-
+/* Dropdown starter gemt når man indlæser siden*/
 #theme-dropdown.hidden {
   display: none;
 }
+
+/* ################################# */
+/*       PLAYER STARTER HER          */
+/* ################################# */
 
 .player-container {
     display: flex;
