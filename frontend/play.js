@@ -162,6 +162,29 @@ function playNextTrack() {
     updatePlayer(currentTracklist[currentTrackIndex]);
 }
 
+// Spol til forrige sang
+function playPreviousTrack() {
+    if (currentTrackIndex > 0) {
+        currentTrackIndex--; // gå én sang tilbage
+    } else {
+        // Hvis vi er på første sang → hop til sidste (loop)
+        currentTrackIndex = currentTracklist.length - 1;
+    }
+
+    updatePlayer(currentTracklist[currentTrackIndex]);
+}
+
+// Spol til næste sang (bruges også af autoplay)
+function playNextTrack() {
+    if (currentTrackIndex < currentTracklist.length - 1) {
+        currentTrackIndex++;
+    } else {
+        currentTrackIndex = 0; // loop til start
+    }
+
+    updatePlayer(currentTracklist[currentTrackIndex]);
+}
+
 
 /* giver liste af sange som passer til moods. Bruges ikke lige nu, 
 // Vis tracks på siden
@@ -182,3 +205,11 @@ function displayTracks(tracks) {
 window.addEventListener("DOMContentLoaded", () => {
     loadTracksForSelectedMoods();
 });//henter tracks automatisk når html-siden er loadet færdigt
+
+document.getElementById("next").addEventListener("click", () => {
+    playNextTrack();
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+    playPreviousTrack();
+});
