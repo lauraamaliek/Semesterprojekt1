@@ -39,7 +39,7 @@ let imgSrc = "";
 
 // Vælg billede ud fra tidspunkt
 if (hour >= 6 && hour < 10) {
-    imgSrc = "goodmorging.png";
+    imgSrc = "goodmorning.png";
 } else if (hour >= 10 && hour < 14) {
     imgSrc = "goodday.png";
 } else if (hour >= 14 && hour < 18) {
