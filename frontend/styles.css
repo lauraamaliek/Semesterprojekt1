@@ -24,7 +24,7 @@
   --card-foreground: #0a0a0a; /* Kort tekst (colortheme?)*/
 
   --primary: #8b5cf6; /* Lilla primærfarve på knapper*/
-  --primary-foreground: #ffffff; /* Tekst på primærfarve på knapper */
+  --primary-foreground: #000000; /* Tekst på primærfarve på knapper */
 
   --border: #e5e5e5; /* Standard kantfarve (i colorthemeboksen) */
   --radius: 0.75rem; /* Runde hjørner (på alle knapper) */
@@ -37,6 +37,7 @@
   --foreground: #ffffff;
   --card: #000000; /* Kort baggrund - når man trykker på dark mode*/
   --card-foreground: #ffffff; /* Kort tekst - Når man trykker på dark mode*/
+  --primary-foreground: #ffffff;
 }
 
 /* ################################# */
