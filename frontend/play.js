@@ -1,19 +1,8 @@
-// SKAL LAVES OM!!!!!
-// Hjælpefunktion for at formatere varighed fra sekunder til mm:ss (Beholdes)
-/*function formatDuration(totalSeconds) {
-    if (typeof totalSeconds !== 'number' || totalSeconds < 0) {
-        return '00:00';
-    }
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = Math.floor(totalSeconds % 60);
-
-    const formattedMinutes = String(minutes).padStart(2, '0');
-    const formattedSeconds = String(seconds).padStart(2, '0');
-
-    return `${formattedMinutes}:${formattedSeconds}`;
-}
-*/
-
+let currentTrackIndex = 0;
+let currentTracklist = [];
+let currentSecond = 0;
+let currentTrackDuration = 0;
+let progressInterval = null;
 
 // Hent tracks ud fra valgte moods
 async function loadTracksForSelectedMoods() {
@@ -59,9 +48,12 @@ async function loadTracksForSelectedMoods() {
         // Gem tracklist til videre brug
         localStorage.setItem("currentTracklist", JSON.stringify(tracks));
         
+        currentTracklist = tracks;
+        currentTrackIndex = 0;
+
         // ⭐ NYT: Indlæs den første sang i afspilleren, hvis listen ikke er tom
-        if (tracks.length > 0) {
-            updatePlayer(tracks[0]); 
+        if (currentTracklist.length > 0) {
+            updatePlayer(currentTracklist[currentTrackIndex]); 
         }
 
     } catch (err) {
@@ -70,31 +62,96 @@ async function loadTracksForSelectedMoods() {
     }
 }
 
-// 🎶 FUNKTION TIL AT INDSÆTTE SANGDETALJER I PLAYEREN
+//omregner duration fra "mm:ss" til sekunder i tal 
+function durationToSeconds(durationString) {
+    if (typeof durationString !== "string") return 0;
+
+    const parts = durationString.split(":");
+    if (parts.length !== 2) return 0;
+
+    const minutes = parseInt(parts[0], 10);
+    const seconds = parseInt(parts[1], 10);
+
+    if (isNaN(minutes) || isNaN(seconds)) return 0;
+
+    return minutes * 60 + seconds;
+}
+
+//laver duration om igen 
+function formatSeconds(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = Math.floor(totalSeconds % 60);
+    return `${String(minutes)}:${String(seconds).padStart(2, '0')}`;
+}
+
+//starter progressbar når funktionen kaldes
+function startProgressBar() {
+    const progressBar = document.getElementById("progress-bar");
+    const currentTimeEl = document.getElementById("current-time");
+
+    if (progressInterval) clearInterval(progressInterval);
+
+    currentSecond = 0;
+    progressBar.value = 0;
+
+    progressInterval = setInterval(() => {
+        currentSecond++;
+        progressBar.value = currentSecond;
+
+        currentTimeEl.textContent = formatSeconds(currentSecond);
+
+    if (currentSecond >= currentTrackDuration) {
+        clearInterval(progressInterval);
+        playNextTrack();   // 🎉 AUTO NEXT TRACK
+        }  
+    }, 1000); //hvorfor 1000????
+
+}
+
+
+//sætter sangen mm. ind i playeren 
 function updatePlayer(track) {
     if (!track) return;
 
     const titleElement = document.getElementById("song-title");
     const artistElement = document.getElementById("song-artist");
-    //const durationElement = document.getElementById("song-duration"); SKAL FIXES
+    const durationElement = document.getElementById("song-duration");
+    const progressBar = document.getElementById("progress-bar");
 
-    // Tildel værdierne. Vi tjekker, om elementerne eksisterer først.
-    if (titleElement) {
-        titleElement.textContent = track.title || "Ukendt titel";
+    if (titleElement) titleElement.textContent = track.title || "Ukendt titel";
+    if (artistElement) artistElement.textContent = track.artist || "Ukendt kunstner";
+
+    const durationSeconds = durationToSeconds(track.duration);
+
+    if (durationElement) {
+        durationElement.textContent = track.duration;
     }
-    if (artistElement) {
-        artistElement.textContent = track.artist || "Ukendt kunstner";
-    }
-    // Antager at track.duration er i sekunder
-   /* if (durationElement) {
-        durationElement.textContent = formatDuration(track.duration);
-    }*/
-    
-    console.log(`Afspiller opdateret med: ${track.title}`);
-    // Her kan du tilføje logik for at starte et audio-element, hvis du har et.
+
+    progressBar.max = durationSeconds;
+    progressBar.value = 0;
+
+    currentTrackDuration = durationSeconds;
+
+    startProgressBar();
 }
 
-/*giver liste af sange som passer til moods. Bruges ikke lige nu, 
+
+//auto-player næste sang
+function playNextTrack() {
+    if (currentTrackIndex < currentTracklist.length - 1) {
+        currentTrackIndex++;
+    } else {
+        // Hvis du vil loope playlisten:
+        currentTrackIndex = 0; 
+    }
+
+    updatePlayer(currentTracklist[currentTrackIndex]);
+}
+
+
+
+/*giver liste af sange som passer til moods. 
+Bruges ikke lige nu, 
 // Vis tracks på siden
 function displayTracks(tracks) {
     const trackList = document.getElementById("trackList");
