@@ -39,15 +39,15 @@ let imgSrc = "";
 
 // Vælg billede ud fra tidspunkt
 if (hour >= 6 && hour < 10) {
-    imgSrc = "goodmorning.png";
+    imgSrc = "photos/goodmorning.png";
 } else if (hour >= 10 && hour < 14) {
-    imgSrc = "goodday.png";
+    imgSrc = "photos/goodday.png";
 } else if (hour >= 14 && hour < 18) {
-    imgSrc = "goodafternoon.png";
+    imgSrc = "photos/goodafternoon.png";
 } else if (hour >= 18 && hour < 23) {
-    imgSrc = "goodevening.png";
+    imgSrc = "photos/goodevening.png";
 } else {
-    imgSrc = "goodnight.png";
+    imgSrc = "photos/goodnight.png";
 }
 
 img.src = imgSrc;
