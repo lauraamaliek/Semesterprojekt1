@@ -13,3 +13,14 @@ nextBtn.addEventListener('click', () => {
         alert('Please enter your name!');
     }
 });
+
+// Funktion der kaldes når man klikker på knappen, på navn-indtastningen
+function goToNextPage() {
+    const name = document.getElementById("nameInput").value;
+
+    // Gemmer navnet i browserens localStorage
+    localStorage.setItem("username", name);
+
+    // Går videre til næste side
+    window.location.href = "greeting.html";
+}
