@@ -54,7 +54,7 @@ async function loadTracksForSelectedMoods() {
         console.log("Tracks returned:", tracks);
 
         // Render til UI (sangliste)
-        //displayTracks(tracks);
+        //displayTracks(tracks); //viser "køen"
 
         // Gem tracklist til videre brug
         localStorage.setItem("currentTracklist", JSON.stringify(tracks));
@@ -94,7 +94,7 @@ function updatePlayer(track) {
     // Her kan du tilføje logik for at starte et audio-element, hvis du har et.
 }
 
-
+/*giver liste af sange som passer til moods. Bruges ikke lige nu, 
 // Vis tracks på siden
 function displayTracks(tracks) {
     const trackList = document.getElementById("trackList");
@@ -109,7 +109,7 @@ function displayTracks(tracks) {
         trackList.appendChild(li);
     });
 }
-
+*/
 
 window.addEventListener("DOMContentLoaded", () => {
     loadTracksForSelectedMoods();

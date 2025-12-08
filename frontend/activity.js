@@ -8,37 +8,7 @@ if (userName) {
 } else {
     activityText.textContent = "What are you doing today?";
 }
-/* gammel kode, erstattet af koden nedenfor
-function go() {
-    window.location.href = 'mood.html';
-} */
-/*
-function ChooseActivity (id) {
-    localStorage.setItem("selectedActivity", JSON.stringify({id})); /*localstorage gemmer lokalt så det kan bruges på næste side, 
-    json.stringify gør objektet til en tekst
-    window.location.href = 'mood.html';
-}
 
-async function getAllActivities(){
-    const response = await fetch("/api/activities");
-    const activities = await response.json();
-
-    const container = document.getElementById("activity-container");
-
-    for (let i=0; i<activities.length; i++) {
-        const activity = activities[i];
-
-        container.innerHTML+=`
-        <button class="button-row" data-id="${activity.id}">
-            ${activity.name}
-        </button>
-    `;
-
-    }
-}
-
-getAllActivities()
-*/
 
 
 async function getAllActivities() {

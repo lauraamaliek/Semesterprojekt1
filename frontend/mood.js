@@ -1,57 +1,4 @@
-function goplay() {
-    window.location.href = 'play.html';
-}
 
-/*
-async function loadMoods() { // henter data fra backend (derfor async)
-    console.log('Loading moods...');
-
-    const activity = JSON.parse(localStorage.getItem ("selectedActivity"));
-
-    //henter alle moods
-    const allMoodsResponse = await fetch ('/api/moods');
-    const allMoods = await allMoodsResponse.json();
-
-    //henter moods fra valgte aktivitet 
-    const activityMoodsResponse = await fetch(`/api/moods/${activity.id}`);
-    const ActivityMoods = await activityMoodsResponse.json();
-
-    //laver et hurtigt lookup
-    const defaultMoodIds = new Set(ActivityMoods.map(m=> m.id));
-
-    const container = document.getElementById("button-row");
-    container.classList.add("button-row");
-    container.innerHTML="";
-
-    allMoods.forEach(mood => {
-        const isDefault = defaultMoodIds.has(mood.id);
-
-        container.innerHTML += `
-        <button 
-            class="mood-button" ${isDefault ? "selected" : ""}"
-            data-id=${mood.id}">
-            ${mood.name}
-        </button>
-        `;
-        
-    });
-
-    //gør knapper togglebare
-    document.querySelectorAll(".mood-button").forEach(button => {
-        button.addEventListener("click", () => {
-            button.classList.toggle("selected");
-        });
-    });
-
-   /* for(let i = 0; i<moods.length; i++) {
-        const mood = moods[i];
-        container.innerHTML += `
-        <button class="mood-button" data-id="${mood.id}">
-            ${mood.name}
-        </button>
-        `;
-    }
-}*/
 
 async function loadMoods() {
     console.log("Loading moods...");
@@ -95,7 +42,6 @@ async function loadMoods() {
     });
 }
 
-//loadMoods();
 
 
 loadMoods();
@@ -144,18 +90,6 @@ loadMoods().then(() => {
 });
 
 
-/*forsøg på at indsætte navnet på valgt aktivitet virker ikke, fungerende kode står nedenfor
-async function getActivityId() {
-    const id = JSON.parse(localStorage.getItem("selectedActivity"));
-
-    const response = await fetch (`/api/activity/${id.name}`);
-    const activity = await response.json();
-
-    document.getElementById("chosen-activity").innerText = activity.name;
-}
-
-getActivityId();
-*/
 
 //her indsættes navnet på den valgte aktivitet
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -171,13 +105,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     } 
 });
 
-
-//forsøg på select/deselect - virker ikke, hvorfor vides ikke!!!
-document.addEventListener("click", e => {
-    if (e.target.classList.contains("mood-button")) {
-        e.target.classList.toggle("selected");
-    }
-});
 
 
 

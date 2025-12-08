@@ -21,10 +21,11 @@ export function play(partyCode, trackId, duration, started, callbackWhenDone) {
 
 function trackElapsedTimes() {
     const now = Date.now();
-    for (const play of players.values()) {
+    for (const [partyCode, play] of players.entries()) {
         const elapsed = now - play.started;
         if (play.duration < elapsed) {
             play.callbackWhenDone();
+            players.delete(partyCode);
         }
     }
     setTimeout(() => trackElapsedTimes(), 100);

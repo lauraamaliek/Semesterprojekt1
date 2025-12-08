@@ -1,4 +1,4 @@
-// Funktion der kaldes når man klikker på knappen
+// Funktion der kaldes når man klikker på knappen, på navn-indtastningen
 function goToNextPage() {
     const name = document.getElementById("nameInput").value;
 

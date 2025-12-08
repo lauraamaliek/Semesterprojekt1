@@ -1,11 +1,10 @@
 import express from 'express';
-import path from 'path';
+
 import { connect } from '../db/connect.js';
-import { play } from './player.js';
+
 
 
 const db = await connect();
-const currentTracks = new Map(); // maps partyCode to index in tracks
 
 const port = process.env.PORT || 3003;
 const server = express();
@@ -18,8 +17,8 @@ server.get('/api/moods/:activityID', OnGetMoodsOnActivty); // Når klikker på e
 server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
 server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter
 server.get('/api/moods', getAllMoods);
-server.get('/api/tracks-by-moods', getTracksByMoods);
-server.post('/api/tracks-by-moods-weighted', getTracksByMoodsWeighted);
+server.get('/api/tracks-by-moods', getTracksByMoods); //bliver ikke brugt, men måske god at have
+server.post('/api/tracks-by-moods-weighted', getTracksByMoodsWeighted); //prioriterer sange som hører til mere end 1 valgt mood 
 
 
 server.listen(port, onServerReady);
@@ -36,9 +35,9 @@ async function OnGetMoodsOnActivty(request, response) { //Functionen der skal he
         `,[activity]); 
     response.json(moods.rows); // hvorfor .rows?
 } 
-// Vend tilbage til = $1 
+// $ bruges som en placeholder til en værdi i arrayet efter SQL-strengen, her er det den første værdi i arrayet [activities]
 
-//forsøg på at få navnet på en aktivitet husket til mood-siden
+//gør så vi får navnet på en aktivitet husket til mood-siden
 async function getActivityId(request, response) {
     const activity = parseInt(request.params.activityID);
     const result = await db.query(`
@@ -49,6 +48,7 @@ async function getActivityId(request, response) {
     response.json(result.rows[0]);
 }
 
+//giver alle aktiviteter, så de kan blive til knapper 
 async function getAllActivities(request, response) {
     const result = await db.query(`
         SELECT *
@@ -57,6 +57,7 @@ async function getAllActivities(request, response) {
     response.json(result.rows);
 }
 
+//giver alle moods 
 async function getAllMoods(request,response){
     const moods = await db.query(`
         SELECT id, name
@@ -136,19 +137,3 @@ function onEachRequest(request, response, next) {
 function onServerReady() {
     console.log('Webserver running on port', port);
 }
-/*
-async function loadTracks() {
-    const dbResult = await db.query(`
-        select track_id, title, artist, duration
-        from   tracks
-    `);
-    return dbResult.rows;
-}
-
-function pickNextTrackFor(partyCode) {
-    const trackIndex = Math.floor(Math.random() * tracks.length)
-    currentTracks.set(partyCode, trackIndex);
-    const track = tracks[trackIndex];
-    play(partyCode, track.track_id, track.duration, Date.now(), () => currentTracks.delete(partyCode));
-    return trackIndex;
-}*/

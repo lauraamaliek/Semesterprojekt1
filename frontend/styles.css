@@ -4,9 +4,12 @@
         segoe ui er windows og resten er backup font*/
     
 /*stjerne foran gennemtvinger at font gælder for alt, selvom det står i body, div eller andet*/
-    /* ################################# */
+
+/* ################################# */
 /*           BASIS VARIABLER         */
 /* ################################# */
+
+/* root: gælder for alle sider, uanset body mm.*/
 
 :root { /* Standardtema (light mode) */
   --font-size: 16px; /* Basis fontstørrelse */
@@ -30,6 +33,8 @@
 
   --background: #0a0a0a;
   --foreground: #ffffff;
+  --card: #ffffff; /* Kort baggrund */
+  --card-foreground: #0a0a0a; /* Kort tekst */
 }
 
 /* ################################# */

@@ -50,14 +50,6 @@ await db.query(`
     )
 `);
 
-/*await db.query(`
-    create table preferences (
-        id int primary key,
-	    user_id int references users,
-		track_id bigint references tracks,
-		liked boolean
-    )
-`);*/
 
 await db.query(`
     create table mood_activity (
@@ -92,10 +84,6 @@ await upload(db, 'db/sang_eksempler.csv', `
 	from stdin
 	with csv header`);
 
-/*await upload(db, 'db/liked_fra_chat.csv', `
-	copy preferences (id, user_id, track_id, liked)
-	from stdin
-	with csv header`);*/
 
 await upload(db, 'db/mood_activity.csv', `
 	copy mood_activity (activity_id, mood_id)
