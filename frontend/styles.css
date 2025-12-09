@@ -122,11 +122,22 @@ button:hover {
 
 }
 
+/* ################################# */
+/*           MOOD                    */
+/* ################################# */
+
 /*.mood-button.selected {
     background-color: var(--primary);
     color: var(--primary-foreground);
 }
 */
+
+#button-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* skift 3 → hvor mange knapper du vil have pr række */
+    gap: 12px; /* mellemrum mellem knapperne */
+}
+
 
 /* Skjul den rigtige checkbox */
 .mood-checkbox {
@@ -135,7 +146,9 @@ button:hover {
 
 /* Selve knappen (label) */
 .mood-button {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px 18px;
     margin: 6px;
     border-radius: var(--radius);
