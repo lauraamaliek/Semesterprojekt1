@@ -361,7 +361,7 @@ button:hover {
     flex: 1; 
 }
 
-.next-track {
+.next-track { 
     width: 200px;
     font-family: Arial;
     padding: 15px;
@@ -369,19 +369,19 @@ button:hover {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-.next-track h4 {
+.next-track h4 { /* hovedet */
     margin-top: 0;
     margin-bottom: 10px;
     text-align: center;
 }
 
-.next-track ul {
+.next-track ul { /* listen */
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.next-track ul li {
+.next-track ul li { /* sangene i listen */
     padding: 5px 0;
     border-bottom: 1px solid #ddd;
 }
