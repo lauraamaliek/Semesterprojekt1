@@ -106,17 +106,17 @@ fetch("/colortheme.html")
     }
 
     if (color === "green") {
-        root.style.setProperty("--primary", "lightgreen");
+        root.style.setProperty("--primary", "lightseagreen");
         root.style.setProperty("--primary-foreground", "#000");
     }
 
     if (color === "grey") {
-        root.style.setProperty("--primary", "lightgray");
+        root.style.setProperty("--primary", "silver");
         root.style.setProperty("--primary-foreground", "#000");
     }
 
     if (color === "beige") {
-        root.style.setProperty("--primary", "bisque");
+        root.style.setProperty("--primary", "beige");
         root.style.setProperty("--primary-foreground", "#000");
     }
 }
