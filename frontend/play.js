@@ -53,7 +53,7 @@ async function loadTracksForSelectedMoods() {
         console.log("Tracks returned:", tracks);
 
         // Viser trackliste på siden
-        //displayTracks(tracks); //viser "køen"
+        displayTracks(tracks); //viser "køen"
 
         // Gem tracklist til videre brug
         localStorage.setItem("currentTracklist", JSON.stringify(tracks));//gemmer tracklist i localstorage som string
@@ -186,7 +186,7 @@ function playNextTrack() {
 }
 
 
-/* giver liste af sange som passer til moods. Bruges ikke lige nu, 
+//giver liste af sange som passer til moods. Bruges ikke lige nu, 
 // Vis tracks på siden
 function displayTracks(tracks) {
     const trackList = document.getElementById("trackList"); //Heder TrackList i .HTML
@@ -200,7 +200,7 @@ function displayTracks(tracks) {
         `;
         trackList.appendChild(li);
     });
-} */
+}
 
 window.addEventListener("DOMContentLoaded", () => {
     loadTracksForSelectedMoods();
