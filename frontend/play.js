@@ -1,5 +1,6 @@
 let currentTrackIndex = 0; //variablen currentTrackIndex sættes til 0, bruges til at holde styr på hvilken sang der spilles nu
 let currentTracklist = []; //der oprettes et tomt array med navnet currentTracklist, her indsættes sange fra valgte moods
+let currentPlayingTrack = null; //skal indeholde den sang som spiller nu 
 let currentSecond = 0; //variablen currentSecond sættes til 0, bruges til progressbaren
 let currentTrackDuration = 0; //variablen currentTrackDuration bruges til progressbar
 let progressInterval = null; //bruges til progressbaren, gør så den kan stoppes igen
