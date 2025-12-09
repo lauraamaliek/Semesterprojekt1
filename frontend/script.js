@@ -1,3 +1,6 @@
+let isDarkMode= false;
+
+
 //Ur på alle sider:
 //klokken
 class LiveClock extends HTMLElement {
@@ -34,6 +37,7 @@ function setLightMode() {
 
     html.classList.remove("dark");
     localStorage.setItem("mode", "light");
+    isDarkMode=false; 
 }
 
 function setDarkMode() {
@@ -44,6 +48,7 @@ function setDarkMode() {
 
     html.classList.add("dark");
     localStorage.setItem("mode", "dark");
+    isDarkMode=true; 
 }
 
 // ####################################################
@@ -94,29 +99,25 @@ fetch("/colortheme.html")
 
   function setTheme(color) {
     const root = document.documentElement;
-
+    if(isDarkMode) {root.style.setProperty("--primary-foreground", "#fff");} else {root.style.setProperty("--primary-foreground", "#000");}
+    
     if (color === "default") {
         root.style.setProperty("--primary", "#8b5cf6");
-        root.style.setProperty("--primary-foreground", "#000");
     }
 
     if (color === "blue") {
         root.style.setProperty("--primary", "lightblue");
-        root.style.setProperty("--primary-foreground", "#000");
     }
 
     if (color === "green") {
         root.style.setProperty("--primary", "lightseagreen");
-        root.style.setProperty("--primary-foreground", "#000");
     }
 
     if (color === "grey") {
         root.style.setProperty("--primary", "silver");
-        root.style.setProperty("--primary-foreground", "#000");
     }
 
     if (color === "beige") {
         root.style.setProperty("--primary", "beige");
-        root.style.setProperty("--primary-foreground", "#000");
     }
 }

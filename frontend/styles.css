@@ -150,8 +150,8 @@ button:hover {
 /* Når mood er valgt */
 .mood-button.selected {
     background: var(--primary);
-    color: var(--primary-foreground);
-}
+    /*color: var(--primary-foreground);*/
+} 
 
 /* ################################# */
 /*           FARVETEMAER             */
@@ -198,6 +198,8 @@ button:hover {
 
 .blue{
   background-color: lightblue !important;
+  --foreground: #ffffff;
+  --primary-foreground: #ffffff !important;
 }
 
 .green{
@@ -326,6 +328,7 @@ button:hover {
 }
 
 .button-nobg{
+  color: var(--primary-foreground);
   background-color: transparent !important;
   padding: 0;
 }
@@ -386,6 +389,7 @@ button:hover {
     border-bottom: 1px solid #ddd;
 }
 /* Til hvor queue ikonet placeres, og et gap mellem de to men ved ikke om det gør noget den er der?*/
+
 .Queue-container {
     display: flex;
     gap: 6px; /* lille afstand mellem ikon og tekst */
