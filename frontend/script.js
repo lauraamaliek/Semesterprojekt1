@@ -100,7 +100,7 @@ fetch("/colortheme.html")
   function setTheme(color) {
     const root = document.documentElement;
     if(isDarkMode) {root.style.setProperty("--primary-foreground", "#fff");} else {root.style.setProperty("--primary-foreground", "#000");}
-    
+
     if (color === "default") {
         root.style.setProperty("--primary", "#8b5cf6");
     }
@@ -120,4 +120,30 @@ fetch("/colortheme.html")
     if (color === "beige") {
         root.style.setProperty("--primary", "beige");
     }
+
+    localStorage.setItem("selectedTheme", color);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("selectedTheme");
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedMode = localStorage.getItem("mode");
+
+    if (savedMode === "dark") {
+        document.documentElement.classList.add("dark");
+        isDarkMode = true;
+    } else {
+        document.documentElement.classList.remove("dark");
+        isDarkMode = false;
+    }
+
+    // Og indlæs også farvetema (hvis du har det)
+    const savedTheme = localStorage.getItem("selectedTheme");
+    if (savedTheme) setTheme(savedTheme);
+});
