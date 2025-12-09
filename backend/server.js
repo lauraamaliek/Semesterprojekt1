@@ -15,10 +15,12 @@ server.use(onEachRequest);
 
 server.get('/api/moods/:activityID', OnGetMoodsOnActivty); // Når klikker på en aktivitet (henter moods)
 server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
-server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter
+server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter, bruges ikke lige nu
+server.get('/api/activities_priorities', getAllActivities2); //endpoint som henter alle aktiviteter i prioriteret rækkefølge 
 server.get('/api/moods', getAllMoods);
 server.get('/api/tracks-by-moods', getTracksByMoods); //bliver ikke brugt, men måske god at have
 server.post('/api/tracks-by-moods-weighted', getTracksByMoodsWeighted); //prioriterer sange som hører til mere end 1 valgt mood 
+
 
 
 server.listen(port, onServerReady);
@@ -57,6 +59,22 @@ async function getAllActivities(request, response) {
     response.json(result.rows);
 }
 
+async function getAllActivities2(request, response){
+    const hour = new Date().getHours();
+
+    const result = await db.query(`
+        SELECT *,
+            CASE
+                WHEN ${hour} >= start_hour AND ${hour} < end_hour THEN 0 
+                ELSE 1
+            END AS priority
+        FROM activities
+        ORDER by priority asc, id asc
+        `);
+    
+    response.json(result.rows);
+}
+
 //giver alle moods 
 async function getAllMoods(request,response){
     const moods = await db.query(`
@@ -65,6 +83,7 @@ async function getAllMoods(request,response){
     `);
     response.json(moods.rows);
 }
+
 
 
 //begyndelse på tracks-by-moods, altså at sange hentes efter hvilke moods der er valgt

@@ -29,7 +29,9 @@ await db.query(`
 await db.query(`
     create table activities (
         id int primary key,
-	    name text not null
+	    name text not null,
+		start_hour int,
+		end_hour int
     )
 `);
 
@@ -70,7 +72,7 @@ console.log('Tables recreated.');
 console.log('Importing data from CSV files...');
 
 await upload(db, 'db/activities.csv', `
-	copy activities (id, name)
+	copy activities (id, name, start_hour, end_hour)
 	from stdin
 	with csv header`);
 

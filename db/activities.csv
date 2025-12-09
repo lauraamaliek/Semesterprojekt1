@@ -1,13 +1,13 @@
-id,name
-1,Wake Up
-2,Commute
-3,Study
-4,Work
-5,Workout
-6,Shower
-7,Deep Work
-8,Relax
-9,Cooking
-10,Evening Chill
-11,Social
-12,Party
+id,name,start_hour,end_hour
+1,Wake Up,5,9
+2,Commute,7,10
+3,Study,9,14
+4,Work,16,22
+5,Workout,14,18
+6,Shower,6,9
+7,Deep Work,10,15
+8,Relax,19,23
+9,Cooking,17,19
+10,Evening Chill,19,23
+11,Social,14,18
+12,Party,19,23

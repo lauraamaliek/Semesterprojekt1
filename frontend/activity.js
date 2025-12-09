@@ -11,8 +11,8 @@ if (userName) {
 
 
 
-async function getAllActivities() {
-    const response = await fetch("/api/activities"); //henter fra api'en 
+async function getAllActivities2() {
+    const response = await fetch("/api/activities_priorities"); //henter fra api'en 
     const activities = await response.json(); //venter på svar fra backend
 
     //fortæller at den skal indsætte knapperne i id'et activity-container i html 
@@ -42,4 +42,4 @@ async function getAllActivities() {
     }
 }
 
-getAllActivities()
+getAllActivities2()
