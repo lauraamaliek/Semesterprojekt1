@@ -192,10 +192,35 @@ function displayTracks(tracks) {
     });
 }
 
+
+//Function så Play/Pause knap/ikon virker
+const playBtn = document.getElementById("play-btn");
+const playIcon = document.getElementById("play-icon");
+
+let isPlaying = true;
+
+playBtn.addEventListener("click", () => {
+    isPlaying = !isPlaying;
+
+    if (isPlaying) {
+        playIcon.textContent = "pause";
+        startProgressBar();            // starter progressbaren
+    } else {
+        playIcon.textContent = "play_arrow";
+        clearInterval(progressInterval); // stopper progressbaren
+    }
+});
+
+
+
+
+
+//Gør at loadTracks... kører når html er loadet 
 window.addEventListener("DOMContentLoaded", () => {
     loadTracksForSelectedMoods();
 });//henter tracks automatisk når html-siden er loadet færdigt
 
+//Laver skip knapper
 document.getElementById("next").addEventListener("click", () => {
     playNextTrack();
 });
