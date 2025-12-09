@@ -52,7 +52,7 @@ async function loadTracksForSelectedMoods() {
         const tracks = await response.json();
         console.log("Tracks returned:", tracks);
 
-        // Render til UI (sangliste)
+        // Viser trackliste på siden
         //displayTracks(tracks); //viser "køen"
 
         // Gem tracklist til videre brug
