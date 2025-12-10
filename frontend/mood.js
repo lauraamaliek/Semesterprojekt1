@@ -15,6 +15,17 @@ async function loadMoods() {
 
     const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
 
+    //Tjekker om der er gemte moods
+    const savedMoods = JSON.parse(localStorage.getItem("selectedMoods") || "null");
+
+    // Brug savedMoods hvis de eksisterer – ellers default
+    let selectedMoodIDs;
+    if (savedMoods && Array.isArray(savedMoods)) {
+        selectedMoodIDs = new Set(savedMoods.map(id => Number(id)));
+        } else {
+            selectedMoodIDs = new Set(defaultMoodIDs);
+        }
+
     // Sortér moods: default-valgte først
     allMoods.sort((a, b) => {
         const aDefault = defaultMoodIDs.has(a.id);
@@ -27,6 +38,7 @@ async function loadMoods() {
         // Hvis begge er default eller begge ikke er, sorter efter id (asc)
         return a.id - b.id;
     });
+
 
 
     const container = document.getElementById("button-row");
@@ -56,7 +68,71 @@ async function loadMoods() {
     });
 }
 
+/*
+//måske funktion som husker moods, men den overskriver noget rækkefølge
+async function loadMoods() {
+    console.log("Loading moods...");
 
+    const activity = JSON.parse(localStorage.getItem("selectedActivity"));
+
+    // Hent alle moods
+    const allMoodsResponse = await fetch(`/api/moods`);
+    const allMoods = await allMoodsResponse.json();
+
+    // Hent moods for aktiviteten (default)
+    const activityMoodsResponse = await fetch(`/api/moods/${activity.id}`);
+    const activityMoods = await activityMoodsResponse.json();
+    const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
+
+    // ⬇ NYT: Hent moods fra localStorage hvis de findes
+    const savedMoods = JSON.parse(localStorage.getItem("selectedMoods") || "null");
+
+    // Brug savedMoods hvis de eksisterer – ellers default
+    let selectedMoodIDs;
+    if (savedMoods && Array.isArray(savedMoods)) {
+        selectedMoodIDs = new Set(savedMoods.map(id => Number(id)));
+    } else {
+        selectedMoodIDs = new Set(defaultMoodIDs);
+    }
+
+    // Sortér moods: default-valgte først (din eksisterende sortering)
+    allMoods.sort((a, b) => {
+        const aDefault = defaultMoodIDs.has(a.id);
+        const bDefault = defaultMoodIDs.has(b.id);
+
+        if (aDefault && !bDefault) return -1;
+        if (!aDefault && bDefault) return 1;
+
+        return a.id - b.id;
+    });
+
+    const container = document.getElementById("button-row");
+    container.innerHTML = "";
+
+    allMoods.forEach(mood => {
+        const isSelected = selectedMoodIDs.has(mood.id);
+
+        container.innerHTML += `
+            <label class="mood-button ${isSelected ? "selected" : ""}">
+                <input 
+                    type="checkbox" 
+                    class="mood-checkbox"
+                    data-id="${mood.id}"
+                    ${isSelected ? "checked" : ""}
+                >
+                ${mood.name}
+            </label>
+        `;
+    });
+
+    // Toggle class når der klikkes
+    document.querySelectorAll(".mood-checkbox").forEach(cb => {
+        cb.addEventListener("change", () => {
+            cb.parentElement.classList.toggle("selected", cb.checked);
+        });
+    });
+}
+*/
 
 loadMoods();
 
