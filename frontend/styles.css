@@ -446,3 +446,90 @@ button:hover {
     display: flex;
     gap: 6px; /* lille afstand mellem ikon og tekst */
 }
+
+/* ################################# */
+/*    MOBILVENLIGT LAYOUT (iPhone)   */
+/* ################################# */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+
+  /* Player + queue skal i én kolonne */
+  .player-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Player skal passe på mobil */
+  .player {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .cover {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  /* Song info */
+  .song-info h3 {
+    font-size: 1.4rem;
+  }
+
+  .song-info p {
+    font-size: 14px;
+  }
+
+  /* Mood-knapper i grid */
+  #button-row {
+    grid-template-columns: repeat(3, 1fr);  /* iPhone venligt */
+    gap: 10px;
+  }
+
+  .mood-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Continue-knap på mobil */
+  #continueBtn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+    width: auto;
+  }
+
+  /* Queue-kassen */
+  .next-track {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .next-track ul li {
+    font-size: 14px;
+  }
+
+  /* Volume & progress mindre */
+  #progress-bar {
+    width: 100%;
+  }
+
+  #volume {
+    width: 100%;
+  }
+
+  /* Controls mindre */
+  #play-btn {
+    height: 40px;
+    width: 40px;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+}
