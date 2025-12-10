@@ -1,93 +1,24 @@
 
-
 async function loadMoods() {
     console.log("Loading moods...");
 
     const activity = JSON.parse(localStorage.getItem("selectedActivity"));
+    const activityId = activity.id;
 
     // Hent alle moods
     const allMoodsResponse = await fetch(`/api/moods`);
     const allMoods = await allMoodsResponse.json();
 
-    // Hent moods for aktiviteten (default)
-    const activityMoodsResponse = await fetch(`/api/moods/${activity.id}`);
-    const activityMoods = await activityMoodsResponse.json();
-
-    const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
-
-    //Tjekker om der er gemte moods
-    const savedMoods = JSON.parse(localStorage.getItem("selectedMoods") || "null");
-
-    // Brug savedMoods hvis de eksisterer – ellers default
-    let selectedMoodIDs;
-    if (savedMoods && Array.isArray(savedMoods)) {
-        selectedMoodIDs = new Set(savedMoods.map(id => Number(id)));
-        } else {
-            selectedMoodIDs = new Set(defaultMoodIDs);
-        }
-
-    // Sortér moods: default-valgte først
-    allMoods.sort((a, b) => {
-        const aDefault = defaultMoodIDs.has(a.id);
-        const bDefault = defaultMoodIDs.has(b.id);
-
-        // Default moods først
-        if (aDefault && !bDefault) return -1;
-        if (!aDefault && bDefault) return 1;
-
-        // Hvis begge er default eller begge ikke er, sorter efter id (asc)
-        return a.id - b.id;
-    });
-
-
-
-    const container = document.getElementById("button-row");
-    container.innerHTML = "";
-
-    allMoods.forEach(mood => {
-        const isDefault = defaultMoodIDs.has(mood.id);
-
-        container.innerHTML += `
-            <label class="mood-button ${isDefault ? "selected" : ""}">
-                <input 
-                    type="checkbox" 
-                    class="mood-checkbox"
-                    data-id="${mood.id}"
-                    ${isDefault ? "checked" : ""}
-                >
-                ${mood.name}
-            </label>
-        `;
-    });
-
-    // Toggle class når der klikkes
-    document.querySelectorAll(".mood-checkbox").forEach(cb => {
-        cb.addEventListener("change", () => {
-            cb.parentElement.classList.toggle("selected", cb.checked);
-        });
-    });
-}
-
-/*
-//måske funktion som husker moods, men den overskriver noget rækkefølge
-async function loadMoods() {
-    console.log("Loading moods...");
-
-    const activity = JSON.parse(localStorage.getItem("selectedActivity"));
-
-    // Hent alle moods
-    const allMoodsResponse = await fetch(`/api/moods`);
-    const allMoods = await allMoodsResponse.json();
-
-    // Hent moods for aktiviteten (default)
-    const activityMoodsResponse = await fetch(`/api/moods/${activity.id}`);
+    // Hent moods for den valgte aktivitet (default moods)
+    const activityMoodsResponse = await fetch(`/api/moods/${activityId}`);
     const activityMoods = await activityMoodsResponse.json();
     const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
 
-    // ⬇ NYT: Hent moods fra localStorage hvis de findes
-    const savedMoods = JSON.parse(localStorage.getItem("selectedMoods") || "null");
+    // ⬇ NYT: load moods KUN for denne aktivitet
+    const storageKey = `selectedMoods_${activityId}`;
+    const savedMoods = JSON.parse(localStorage.getItem(storageKey) || "null");
 
-    // Brug savedMoods hvis de eksisterer – ellers default
+    // Brug savedMoods hvis de findes – ellers start fra defaults
     let selectedMoodIDs;
     if (savedMoods && Array.isArray(savedMoods)) {
         selectedMoodIDs = new Set(savedMoods.map(id => Number(id)));
@@ -95,7 +26,7 @@ async function loadMoods() {
         selectedMoodIDs = new Set(defaultMoodIDs);
     }
 
-    // Sortér moods: default-valgte først (din eksisterende sortering)
+    // Sortering: default først – derefter alle andre efter ID
     allMoods.sort((a, b) => {
         const aDefault = defaultMoodIDs.has(a.id);
         const bDefault = defaultMoodIDs.has(b.id);
@@ -106,6 +37,7 @@ async function loadMoods() {
         return a.id - b.id;
     });
 
+    // Byg UI
     const container = document.getElementById("button-row");
     container.innerHTML = "";
 
@@ -125,14 +57,13 @@ async function loadMoods() {
         `;
     });
 
-    // Toggle class når der klikkes
+    // CSS toggle
     document.querySelectorAll(".mood-checkbox").forEach(cb => {
         cb.addEventListener("change", () => {
             cb.parentElement.classList.toggle("selected", cb.checked);
         });
     });
 }
-*/
 
 loadMoods();
 
@@ -158,10 +89,15 @@ function updateContinueButton() {
         continueBtn.setAttribute("aria-disabled", "false");
     }
 
-    // Gem valgte moods i localStorage (bevarer din eksisterende adfærd)
+    // Valgte moods, gemmes per aktivitet 
     const selectedMoodIds = Array.from(selectedCheckboxes).map(cb => cb.dataset.id);
-    localStorage.setItem("selectedMoods", JSON.stringify(selectedMoodIds));
+
+    const activity = JSON.parse(localStorage.getItem("selectedActivity"));
+    const storageKey = `selectedMoods_${activity.id}`;
+
+    localStorage.setItem(storageKey, JSON.stringify(selectedMoodIds));
 }
+
 
 // Tilføj event listeners til eksisterende mood-checkboxes
 function attachMoodListeners() {
