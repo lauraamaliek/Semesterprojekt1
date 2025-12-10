@@ -55,15 +55,22 @@ function updateContinueButton() {
     const selectedCheckboxes = document.querySelectorAll(".mood-checkbox:checked");
     const selectedCount = selectedCheckboxes.length;
 
-    // Opdater knaptekst
-    continueBtn.textContent = `Continue${selectedCount > 0 ? ` with ${selectedCount} moods` : ""}`;
+    // Hvis ingen valgt → vis venlig prompt og deaktiver knap
+    if (selectedCount === 0) {
+        continueBtn.textContent = "Select moods to continue";
+        continueBtn.disabled = true;
+        continueBtn.classList.add("disabled");
+        continueBtn.setAttribute("aria-disabled", "true");
+    } else {
+        continueBtn.textContent = `Continue with ${selectedCount} mood${selectedCount > 1 ? "s" : ""}`;
+        continueBtn.disabled = false;
+        continueBtn.classList.remove("disabled");
+        continueBtn.setAttribute("aria-disabled", "false");
+    }
 
-    // Gem valgte moods i localStorage
+    // Gem valgte moods i localStorage (bevarer din eksisterende adfærd)
     const selectedMoodIds = Array.from(selectedCheckboxes).map(cb => cb.dataset.id);
     localStorage.setItem("selectedMoods", JSON.stringify(selectedMoodIds));
-
-    // Deaktiver knap, hvis ingen moods er valgt
-    continueBtn.disabled = selectedCount === 0;
 }
 
 // Tilføj event listeners til eksisterende mood-checkboxes
