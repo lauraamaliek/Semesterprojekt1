@@ -29,11 +29,6 @@ async function loadTracksForSelectedMoods() {
     /*.map kører en funktion på alle elementer i arrayet, her kører den funktionen number, som laver alle elementer om til tal, 
     herefter filtrerer den de elementer fra som isNaN (Not a Number) */ 
     
-    if (selectedMoods.length === 0) {
-        console.warn("No valid moods remaining after conversion!");
-        document.getElementById("trackList").innerHTML = "<p>Vælg venligst et mood for at se sange.</p>";
-        return;
-    } /* tjekker om selectedModds er 0, hvis den er printer den warn i consol og skriver <p></p> på html siden */
 
     console.log("Selected moods (as numbers):", selectedMoods);// printer selectedMoods i konsollen, den giver mood_id'er i et array
 
@@ -43,7 +38,7 @@ async function loadTracksForSelectedMoods() {
             headers: {
                 'Content-Type': 'application/json'//fortæller serveren at data er i json-format
             },
-            body: JSON.stringify({ selectedMoods })//gør det til en string c
+            body: JSON.stringify({ selectedMoods })//gør det til en string 
         });//sender listen af valgte moods til serveren, med post fordi serveren skal behandle data
 
         if (!response.ok) {
@@ -101,8 +96,6 @@ function startProgressBar() {
     const currentTimeEl = document.getElementById("current-time");
 
     if (progressInterval) clearInterval(progressInterval);//Stopper tidligere intervaller
-
-    /*currentSecond = 0;*/ // Gør den starter forfra efter Play/Pause så kommateret den lige ud, skal også være væk for at kunne spole
 
     progressInterval = setInterval(() => {
         currentSecond++;//currentSecond skal stige med 1 hver gang
@@ -188,6 +181,7 @@ function updateQueue(){
     const maxVisible =10;
 
     let startIndex = (currentTrackIndex+1)%total;
+    //modulus operatoren dividerer startIndex, med total og resultatet er resten ved division, hvilket gør det muligt for køen at køre i loop
 
     const upcomingTracks = []
     for (let i=0; i<total -1; i++){
