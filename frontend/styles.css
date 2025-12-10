@@ -8,6 +8,20 @@
         segoe ui er windows og resten er backup font*/
 /*stjerne foran gennemtvinger at font gælder for alt, selvom det står i body, div eller andet*/
 
+
+
+/*##################################*/
+/*            INDEX-SIDE.           */
+/*##################################*/
+
+#nameInput{
+  background: white;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
 /* ################################# */
 /*           BASIS VARIABLER         */
 /* ################################# */
