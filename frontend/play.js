@@ -54,7 +54,7 @@ async function loadTracksForSelectedMoods() {
         console.log("Tracks returned:", tracks);
 
         // Viser trackliste på siden
-        displayTracks(tracks); //viser "køen"
+        updateQueue(); //viser "køen"
 
         // Gem tracklist til videre brug
         localStorage.setItem("currentTracklist", JSON.stringify(tracks));//gemmer tracklist i localstorage som string
@@ -148,6 +148,7 @@ function updatePlayer(track) {
     currentTrackDuration = durationSeconds;
 
     startProgressBar();
+    updateQueue();
 }
 
 
@@ -175,23 +176,37 @@ function playPreviousTrack() {
     updatePlayer(currentTracklist[currentTrackIndex]);
 }
 
+//køen opdateres dynamisk, og viser max 10 sange af gangen
+function updateQueue(){
+    const queueList=document.getElementById("next-songs");
+    queueList.innerHTML="";
 
-//giver liste af sange som passer til moods. Bruges ikke lige nu, 
-// Vis tracks på siden
-function displayTracks(tracks) {
-    const trackList = document.getElementById("next-songs"); //Heder TrackList i .HTML
-    trackList.innerHTML = "";
+    const total = currentTracklist.length;
 
-    tracks.forEach(track => {
+    if (total <=1) return;
+
+    const maxVisible =10;
+
+    let startIndex = (currentTrackIndex+1)%total;
+
+    const upcomingTracks = []
+    for (let i=0; i<total -1; i++){
+        let idx = (startIndex+i)%total;
+        upcomingTracks.push(currentTracklist[idx]);
+    }
+
+    const visibleTracks = upcomingTracks.slice(0,maxVisible);
+
+    visibleTracks.forEach(track => {
         const li = document.createElement("li");
-        li.innerHTML = `
-            <strong>${track.title}</strong><br>
-            <em>${track.artist}</em><br>
+        li.innerHTML=`
+        <strong>${track.title}</strong><br>
+        <em>${track.artist}</em><br>
         `;
-        trackList.appendChild(li);
+        queueList.appendChild(li);
+
     });
 }
-
 
 //Function så Play/Pause knap/ikon virker
 const playBtn = document.getElementById("play-btn");
@@ -210,9 +225,6 @@ playBtn.addEventListener("click", () => {
         clearInterval(progressInterval); // stopper progressbaren
     }
 });
-
-
-
 
 
 //Gør at loadTracks... kører når html er loadet 

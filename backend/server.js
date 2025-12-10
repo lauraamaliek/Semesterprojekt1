@@ -133,8 +133,7 @@ async function getTracksByMoodsWeighted(request, response) {
             JOIN song_mood sm ON t.id = sm.song_id
             WHERE sm.mood_id IN (${placeholders})
             GROUP BY t.id
-            ORDER BY match_count DESC, RANDOM()
-            LIMIT 10;
+            ORDER BY match_count DESC, RANDOM();
         `;
         // Konverter til tal her:
         const result = await db.query(query, selectedMoods.map(Number));
