@@ -11,11 +11,12 @@
 
 
 /*##################################*/
-/*            INDEX-SIDE.           */
+/*            INDEX-SIDE            */
 /*##################################*/
 
 #nameInput{
   background: white;
+  padding: 2px 4px;
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 6px;
