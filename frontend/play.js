@@ -125,6 +125,7 @@ function updatePlayer(track) {
     const artistElement = document.getElementById("song-artist");
     const durationElement = document.getElementById("song-duration");
     const progressBar = document.getElementById("progress-bar");
+    const albumImg = document.getElementById("album-img");
 
     if (titleElement) titleElement.textContent = track.title || "Ukendt titel";//hvis titel mangler
     if (artistElement) artistElement.textContent = track.artist || "Ukendt kunstner";//hvis kunstner mangler
@@ -139,6 +140,14 @@ function updatePlayer(track) {
     progressBar.value = 0;
 
     currentTrackDuration = durationSeconds;
+
+  // 🔥 Dynamisk album-cover
+    albumImg.src = `albumPhotos/${track.id}.jpg`; //fortæller at albumImg skal være indsætte jpg, som passer til track.id
+
+    // Hvis fil mangler – fallback
+    albumImg.onerror = () => {
+        albumImg.src = "albumPhotos/default.jpg";
+    };
 
     startProgressBar();
     updateQueue();
