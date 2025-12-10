@@ -448,46 +448,30 @@ button:hover {
 }
 
 /* ################################# */
-/*    MOBILVENLIGT LAYOUT (iPhone)   */
+/*     MOBIL: FIX TOP-AFSTAND        */
 /* ################################# */
 
 @media (max-width: 600px) {
 
   body {
-    padding: 10px;
-    justify-content: flex-start;
+    padding-top: 80px !important;   /* Flytter alt længere ned */
+    justify-content: flex-start;    /* Undgå centering helt i toppen */
   }
 
-  /* Player + queue skal i én kolonne */
-  .player-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  h1, h2, h3, p {
+    margin-top: 20px !important;    /* Ekstra luft over tekst */
   }
 
-  /* Player skal passe på mobil */
-  .player {
-    width: 90%;
-    max-width: 350px;
+  /* Flyt indhold på greeting, activity og mood */
+  .content, 
+  .container, 
+  .main-content {
+    margin-top: 40px !important;    /* Sikrer at alt rykkes ned */
   }
 
-  .cover {
-    width: 100%;
-    border-radius: 12px;
-  }
-
-  /* Song info */
-  .song-info h3 {
-    font-size: 1.4rem;
-  }
-
-  .song-info p {
-    font-size: 14px;
-  }
-
-  /* Mood-knapper i grid */
+  /* Mood-knapper */
   #button-row {
-    grid-template-columns: repeat(3, 1fr);  /* iPhone venligt */
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
 
@@ -496,40 +480,18 @@ button:hover {
     font-size: 14px;
   }
 
-  /* Continue-knap på mobil */
+  /* Aktivitet-knapper – samme som moods */
+  .activity-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Continue-knap */
   #continueBtn {
     padding: 8px 16px;
     font-size: 14px;
     border-radius: 10px;
     width: auto;
-  }
-
-  /* Queue-kassen */
-  .next-track {
-    width: 90%;
-    padding: 12px;
-  }
-
-  .next-track ul li {
-    font-size: 14px;
-  }
-
-  /* Volume & progress mindre */
-  #progress-bar {
-    width: 100%;
-  }
-
-  #volume {
-    width: 100%;
-  }
-
-  /* Controls mindre */
-  #play-btn {
-    height: 40px;
-    width: 40px;
-  }
-
-  .controls {
-    gap: 8px;
+    margin-top: 20px;
   }
 }
