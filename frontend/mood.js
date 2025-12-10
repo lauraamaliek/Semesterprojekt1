@@ -15,6 +15,20 @@ async function loadMoods() {
 
     const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
 
+    // Sortér moods: default-valgte først
+    allMoods.sort((a, b) => {
+        const aDefault = defaultMoodIDs.has(a.id);
+        const bDefault = defaultMoodIDs.has(b.id);
+
+        // Default moods først
+        if (aDefault && !bDefault) return -1;
+        if (!aDefault && bDefault) return 1;
+
+        // Hvis begge er default eller begge ikke er, sorter efter id (asc)
+        return a.id - b.id;
+    });
+
+
     const container = document.getElementById("button-row");
     container.innerHTML = "";
 
