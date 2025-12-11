@@ -416,18 +416,17 @@ button:hover {
     flex: 1; 
 }
 
+/* Her starter kassen Listen af Next Track er inde i*/
 .next-track { 
-    width: 200px;
-    font-family: Arial;
-    padding: 15px;
+    width: 300px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .next-track h4 { /* hovedet */
     margin-top: 0;
-    margin-bottom: 10px;
-    text-align: center;
+    margin-bottom: 15px;
 }
 
 .next-track ul { /* listen */
@@ -437,9 +436,45 @@ button:hover {
 }
 
 .next-track ul li { /* sangene i listen */
-    padding: 5px 0;
+    padding: 6px 0;
     border-bottom: 1px solid #ddd;
 }
+/* Her starter inholdet i kassen*/
+
+.queue-cover {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    box-shadow: 1px 1px px;
+}
+
+#next-songs li {
+    display: flex;
+    align-items: center;     
+    gap: 10px;              
+    padding: 10px 0;          
+}
+
+.queue-text {
+    display: flex;
+    /* flex-direction: column; titel over artist virker ikk :( */ 
+    
+}
+
+.queue-title {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+
+}
+
+.queue-artist {
+    font-size: 10px;
+    margin-top: 30px;
+}
+
 /* Til hvor queue ikonet placeres, og et gap mellem de to men ved ikke om det gør noget den er der?*/
 
 .Queue-container {
@@ -450,6 +485,7 @@ button:hover {
 /* ################################# */
 /*    MOBILVENLIGT LAYOUT (TOP PADDING) */
 /* ################################# */
+
 
 @media (max-width: 600px) {
 

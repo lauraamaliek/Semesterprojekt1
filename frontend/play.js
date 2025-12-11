@@ -203,13 +203,16 @@ function updateQueue(){
     visibleTracks.forEach(track => {
         const li = document.createElement("li");
         li.innerHTML=`
-        <strong>${track.title}</strong><br>
-        <em>${track.artist}</em><br>
+        <img class="queue-cover" src="albumPhotos/${track.id}.jpg" 
+        <div class="queue-text">
+        <strong class="queue-title">${track.title}</strong><br>
+        <em class="queue-artist">${track.artist}</em>
+        </div>
         `;
         queueList.appendChild(li);
 
     });
-}
+} //Tilføjede denne linje "<img class="queue-cover" src="albumPhotos/${track.id}.jpg" for at få det til at virke ved listen også
 
 //Function så Play/Pause knap/ikon virker
 const playBtn = document.getElementById("play-btn");
