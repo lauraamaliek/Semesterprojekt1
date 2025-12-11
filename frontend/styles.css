@@ -30,29 +30,29 @@
 /* root: gælder for alle sider, uanset body mm.*/
 
 :root { /* Standardtema (light mode) */
-  --font-size: 16px; /* Basis fontstørrelse */
-
-  --background: #ffffff; /* Hvid baggrund på alle sider (standard)*/
-  --foreground: #0a0a0a; /* Sort tekst på alle sider (standard)*/
-
-  --card: #ffffff; /* Kort baggrund (til colortheme?)*/
-  --card-foreground: #0a0a0a; /* Kort tekst (colortheme?)*/
-
-  --primary: #8b5cf6; /* Lilla primærfarve på knapper*/
-  --primary-foreground: #000000; /* Tekst på primærfarve på knapper */
-
-  --border: #e5e5e5; /* Standard kantfarve (i colorthemeboksen) */
-  --radius: 0.75rem; /* Runde hjørner (på alle knapper) */
+ --font-size: 16px; /* Basis fontstørrelse */
+ --background: #ffffff; /* Hvid baggrund på alle sider (standard)*/
+ --foreground: #0a0a0a; /* Sort tekst på alle sider (standard)*/
+ --card: #ffffff; /* Kort baggrund (til colortheme?)*/
+ --card-foreground: #0a0a0a; /* Kort tekst (colortheme?)*/
+ --primary: #8b5cf6; /* Lilla primærfarve på knapper*/
+ /* ↓↓↓ DENNE SKAL ALDRIG ÆNDRES AF ACCENTFARVER ↓↓↓ */
+ --primary-foreground: #000000 !important; /* Tekstfarve i Light Mode */
+ /* ↑↑↑ Fixet her ↑↑↑ */
+ --border: #e5e5e5; /* Standard kantfarve (i colorthemeboksen) */
+ --radius: 0.75rem; /* Runde hjørner (på alle knapper) */
 }
 
-/* Når man trykker på knappen til Light/Dark Mode */
-:root.dark {
 
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --card: #000000; /* Kort baggrund - når man trykker på dark mode*/
-  --card-foreground: #000000; /* Kort tekst - Når man trykker på dark mode*/
-  --primary-foreground: #ffffff;
+/* Dark Mode */
+:root.dark {
+ --background: #0a0a0a;
+ --foreground: #ffffff;
+ --card: #000000; /* Kort baggrund - når man trykker på dark mode*/
+ --card-foreground: #000000; /* Kort tekst - Når man trykker på dark mode*/
+ /* ↓↓↓ DENNE MÅ HELLER IKKE ÆNDRES AF ACCENTFARVER ↓↓↓ */
+ --primary-foreground: #ffffff !important; /* Tekstfarve i Dark Mode */
+ /* ↑↑↑ Fixet her ↑↑↑ */
 }
 
 /* ################################# */
