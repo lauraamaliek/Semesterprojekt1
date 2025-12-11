@@ -207,10 +207,10 @@ function updateQueue(){
     visibleTracks.forEach(track => {
         const li = document.createElement("li");
         li.innerHTML=`
-        <img class="queue-cover" src="albumPhotos/${track.id}.jpg" />
+        <img class="queue-cover" src="albumPhotos/${track.id}.jpg" 
         <div class="queue-text">
-         <p class="queue-title">${track.title}</p>
-         <p class="queue-artist">${track.artist}</p>
+        <strong class="queue-title">${track.title}</strong><br>
+        <em class="queue-artist">${track.artist}</em>
         </div>
         `;
         queueList.appendChild(li);
