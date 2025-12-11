@@ -102,7 +102,7 @@ fetch("/colortheme.html")
     if(isDarkMode) {root.style.setProperty("--primary-foreground", "#fff");} else {root.style.setProperty("--primary-foreground", "#000");}
 
     if (color === "default") {
-        root.style.setProperty("--primary", "#8b5cf6");
+        root.style.setProperty("--primary", "#d8bfd8");
     }
 
     if (color === "blue") {

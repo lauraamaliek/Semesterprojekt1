@@ -54,10 +54,11 @@
  --primary-foreground: #ffffff !important; /* Tekstfarve i Dark Mode */
  /* ↑↑↑ Fixet her ↑↑↑ */
 }
-/* Skift farve på afspilleren med sekunder og farve på lyd(VIRKER NÆSTEN)????
+/* Skift farve på afspilleren med sekunder og farve på lyd(VIRKER NÆSTEN)????*/
 #progress-bar,
 #volume {
     accent-color: var(--primary); /* knob følger tema */
+}
 
 /* ################################# */
 /*     GENERELT RESET OG LAYOUT      */
@@ -266,7 +267,7 @@ button:hover {
 /* Fandt lige ud af at når man trykker på farvetema knappen altid sort, må blive fixet på et andet tidspunkt*/
 
 .default{
-  background-color: #8b5cf6 !important;
+  background-color: #d8bfd8 !important;
 }
 
 .blue{
