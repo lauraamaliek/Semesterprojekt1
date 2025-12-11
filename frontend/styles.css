@@ -330,29 +330,28 @@ button:hover {
     margin-bottom: 15px;
     box-shadow: 4px 4px 16px;
 }
-
+/* Sang artist og titel i player*/
 .song-info {
     width: 100%;
-    text-align: center;
     margin-top: 0;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
 }
-
+/* Sang titel i player*/
 .song-info h3{
   font-size: 1.875rem;
   margin-bottom: 0;
   padding-bottom: 0;
 }
-
+/* Sang artist i player*/
 .song-info p{
   font-size: 18px;
   color: #a3a3a3;
   padding: 0;
   margin: 0;
 }
-
+/* Forkortelse på sangens længde*/
 #song-title{
   white-space: nowrap;
   overflow: hidden;
@@ -360,6 +359,7 @@ button:hover {
   max-width: 100%;
   display: block;
 }
+/* placering i timeren ved playeren*/
 .song-time{
     display: flex;
     flex-direction: row;
@@ -468,6 +468,7 @@ button:hover {
 .queue-text {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     /* flex-direction: column; titel over artist virker ikk :( */ 
     
 }
@@ -482,6 +483,7 @@ button:hover {
 .queue-artist {
     font-size: 10px;
     margin-left: 2px 0 0 0;
+    margin-top: 2px;
 }
 
 /* Til hvor queue ikonet placeres, og et gap mellem de to men ved ikke om det gør noget den er der?*/
