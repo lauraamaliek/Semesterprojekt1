@@ -54,6 +54,10 @@
  --primary-foreground: #ffffff !important; /* Tekstfarve i Dark Mode */
  /* ↑↑↑ Fixet her ↑↑↑ */
 }
+/* Skift farve på afspilleren med sekunder og farve på lyd(VIRKER NÆSTEN)????
+#progress-bar,
+#volume {
+    accent-color: var(--primary); /* knob følger tema */
 
 /* ################################# */
 /*     GENERELT RESET OG LAYOUT      */
