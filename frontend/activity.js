@@ -17,13 +17,14 @@ async function getAllActivities2() {
 
     //fortæller at den skal indsætte knapperne i id'et activity-container i html 
     const container = document.getElementById("activity-container");
-    container.classList.add("activity-button");
     
     for (let i=0; i<activities.length; i++) { //for loop, gennemgår fra 0 og til tabellen er slut, i stiger med 1 hver gang 
         const activity = activities[i];
 
         //laver knappen som et DOM-element 
         const button = document.createElement("button"); //opretter knappen 
+        button.classList.add("activity-button");  // Gør CSS gældende
+
         button.dataset.id=activity.id;
         button.innerText=activity.name; //viser aktivitets-navn på knappen
 
