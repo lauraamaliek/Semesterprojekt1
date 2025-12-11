@@ -130,8 +130,6 @@ button:hover {
 }
 
 
-
-
 /* ################################# */
 /*           ACTIVITY                */
 /* ################################# */
@@ -145,6 +143,7 @@ button:hover {
   }
 
  .activity-button {
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 12px 18px;
@@ -552,7 +551,7 @@ button:hover {
   }
 
   /* Mood-knapper til iPhone */
-  #button-row {
+  #mood-button-row {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
@@ -563,10 +562,18 @@ button:hover {
   }
 
   /* Activity-knapper samme som mood */
-  #activity-container {
-    padding: 10px;
+  .activity-button {
+    padding: 10px 16px;
     font-size: 14px;
+    min-width: 80px;
+    height: 40px;
   }
+    
+  #activity-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
 
   /* Continue-knap mobil */
   #continueBtn {
