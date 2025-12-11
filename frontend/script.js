@@ -118,7 +118,7 @@ fetch("/colortheme.html")
     }
 
     if (color === "beige") {
-        root.style.setProperty("--primary", "beige");
+        root.style.setProperty("--primary", "#d4b895");
     }
 
     localStorage.setItem("selectedTheme", color);

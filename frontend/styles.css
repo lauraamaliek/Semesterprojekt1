@@ -189,7 +189,7 @@ button:hover {
 /* Når mood er valgt */
 .mood-button.selected {
     background: var(--primary);
-    /*color: var(--primary-foreground);*/
+    color: var(--primary-foreground);
 } 
 
 /* --- Continue knap --- */
@@ -280,7 +280,7 @@ button:hover {
 }
 
 .beige{
-  background-color: beige !important;
+  background-color: #d4b895 !important;
 }
 
 /*Knapperne inde i containeren*/
