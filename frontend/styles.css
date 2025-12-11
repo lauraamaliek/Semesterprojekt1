@@ -129,19 +129,38 @@ button:hover {
     z-index: 1000;                       /* altid ovenpå andre elementer */
 }
 
-.button-row {
-    display: grid; /* et 'gitter' til at placere kanpperne i (rækker) */
-    grid-template-columns: repeat(4, 1fr); /* 4 knapper pr. række, samt lige mellemrum mellem alle knapper */
-    gap: 12px; /* mellemrummet mellem knapper */
-    margin: 0 auto; /* centrer grid i midten */
 
-}
+
+
+/* ################################# */
+/*           ACTIVITY                */
+/* ################################# */
+
+  /* Activity-knapper samme som mood */
+
+  #activity-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px; 
+  }
+
+ .activity-button {
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    margin: 6px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    transition: 0.2s;
+  }
 
 /* ################################# */
 /*           MOOD                    */
 /* ################################# */
 
-#button-row {
+#mood-button-row {
     display: grid;
     grid-template-columns: repeat(8, 1fr); /* skift 3 → hvor mange knapper du vil have pr række */
     gap: 12px; /* mellemrum mellem knapperne */
@@ -426,21 +445,14 @@ button:hover {
 
 /* Her starter kassen Listen af Next Track er inde i*/
 .next-track { 
-    width: 300px;
+    width: 350px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-.next-track h4 { /* hovedet */
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
 .next-track ul { /* listen */
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 0;  
 }
 
 .next-track ul li { /* sangene i listen */
@@ -491,6 +503,11 @@ button:hover {
 .Queue-container {
     display: flex;
     gap: 6px; /* lille afstand mellem ikon og tekst */
+}
+
+.next-track h4 { /* hovedet */
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 /* ################################# */
@@ -546,7 +563,7 @@ button:hover {
   }
 
   /* Activity-knapper samme som mood */
-  .activity-button {
+  #activity-container {
     padding: 10px;
     font-size: 14px;
   }
