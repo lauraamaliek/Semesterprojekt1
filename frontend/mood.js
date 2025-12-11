@@ -38,7 +38,7 @@ async function loadMoods() {
     });
 
     // Byg UI
-    const container = document.getElementById("button-row");
+    const container = document.getElementById("mood-button-row");
     container.innerHTML = "";
 
     allMoods.forEach(mood => {
