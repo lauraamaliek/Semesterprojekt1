@@ -318,6 +318,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
    
 }
 
@@ -352,6 +353,13 @@ button:hover {
   margin: 0;
 }
 
+#song-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
 .song-time{
     display: flex;
     flex-direction: row;
@@ -447,18 +455,19 @@ button:hover {
     object-fit: cover;
     border-radius: 4px;
     display: block;
-    box-shadow: 1px 1px px;
+    box-shadow: 1px 1px 5px;
 }
 
 #next-songs li {
     display: flex;
-    align-items: center;     
+    align-items: left;     
     gap: 10px;              
-    padding: 10px 0;          
+    padding: 10px 0;
 }
 
 .queue-text {
     display: flex;
+    flex-direction: column;
     /* flex-direction: column; titel over artist virker ikk :( */ 
     
 }
@@ -466,13 +475,13 @@ button:hover {
 .queue-title {
     font-size: 12px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin: 0px;
 
 }
 
 .queue-artist {
     font-size: 10px;
-    margin-top: 30px;
+    margin-left: 2px 0 0 0;
 }
 
 /* Til hvor queue ikonet placeres, og et gap mellem de to men ved ikke om det gør noget den er der?*/
