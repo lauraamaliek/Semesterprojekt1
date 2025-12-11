@@ -17,8 +17,12 @@ document.getElementById("progress-bar").addEventListener("input", (e) => {
 async function loadTracksForSelectedMoods() {
     console.log("Loading tracks based on selected moods...");//skriver besked i konsollen som fortæller hvad der sker, viser at funktionen er i gang
 
-    // Hent valgte moods fra localStorage og konverter til tal
-    let selectedMoods = JSON.parse(localStorage.getItem("selectedMoods"));//henter de valgte moods fra localStorage, JSON.parse=modtager string fra web-serveren som omskrives til tal
+    //henter de valgte moods fra localStorage, JSON.parse=modtager string fra web-serveren som omskrives til tal
+    const activity = JSON.parse(localStorage.getItem("selectedActivity"));
+    const MoodsSelectedByActivity = `selectedMoods_${activity.id}`;
+
+    let selectedMoods = JSON.parse(localStorage.getItem(MoodsSelectedByActivity));
+
     if (!selectedMoods || selectedMoods.length === 0) {//tjekker at selectedMoods findes og er forskellig fra 0
         console.warn("No moods selected!");//kun hvis tom, skrives der "no moods detected" i konsollen
         document.getElementById("trackList").innerHTML = "<p>Vælg venligst et mood for at se sange.</p>";//kun hvis tom, printer <p></p> på siden som html hvor trackList id'et er 
