@@ -1,13 +1,9 @@
 id,name
-1,Groggy
 2,Motivated
 3,Calm
-4,Annoyed
-5,Focused
+5,Focus
 6,Productive
 7,Energetic
-8,Hungry
-9,Concentrated
 10,Relaxed
 11,Creative
 12,Chill
@@ -18,7 +14,6 @@ id,name
 17,Reflective
 18,Adventurous
 19,Happy
-20,Romantic
 21,Lo-fi Chill
 22,Indie
 23,Hyped Up
@@ -26,16 +21,12 @@ id,name
 25,Low Energy
 26,R&B Vibes
 27,Stressed Out
-28,Deep Focus
 29,Upbeat Pop
 30,Mellow
 31,Trap Energy
 32,Overthinking
-33,Calm Rap
+33,Rap
 34,Good Vibes
-35,Heavy Thoughts
-36,Feel-Good Indie
 38,Weekend
-39,Ambient Focus
 40,Soft & Sleepy
 41,Christmas
