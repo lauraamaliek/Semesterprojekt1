@@ -1,15 +1,3 @@
-/* ################################# */
-/*           Font        */
-/* ################################# */
-
-*{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-        "Helvetica Neue", sans-serif;} /*font er standard styresystem font for enheden, de første 2 er mac font, 
-        segoe ui er windows og resten er backup font*/
-/*stjerne foran gennemtvinger at font gælder for alt, selvom det står i body, div eller andet*/
-
-
-
 /*##################################*/
 /*            INDEX-SIDE            */
 /*##################################*/
@@ -27,7 +15,7 @@
 /*           BASIS VARIABLER         */
 /* ################################# */
 
-/* root: gælder for alle sider, uanset body mm.*/
+/* root: Roden i CSS dokument, gælder hele dokumentet (variabler kan ændres med udtryk 'var') mm.*/
 
 :root { /* Standardtema (light mode) */
  --font-size: 16px; /* Basis fontstørrelse */
@@ -43,7 +31,6 @@
  --radius: 0.75rem; /* Runde hjørner (på alle knapper) */
 }
 
-
 /* Dark Mode */
 :root.dark {
  --background: #0a0a0a;
@@ -54,34 +41,26 @@
  --primary-foreground: #ffffff !important; /* Tekstfarve i Dark Mode */
  /* ↑↑↑ Fixet her ↑↑↑ */
 }
-/* Skift farve på afspilleren med sekunder og farve på lyd(VIRKER NÆSTEN)????*/
-#progress-bar,
-#volume {
-    accent-color: var(--primary); /* knob følger tema */
-}
 
 /* ################################# */
 /*     GENERELT RESET OG LAYOUT      */
 /* ################################# */
 
-html {
-  font-size: var(--font-size); /* Gør fontstørrelsen nem at ændre */
-}
-
 body {
   background: var(--background); /* Body baggrund følger tema */
   color: var(--foreground); /* Tekstfarve følger tema */
-  font-family: system-ui, sans-serif; /* Moderne standard font */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /*font er standard styresystem font for enheden, de første 2 er mac font, segoe ui er windows og resten er backup font*/
   margin: 0; /* Fjern default margin */
   padding: 20px; /* Giv lidt luft */
 
-      /* NYE TILFØJELSER FOR CENTRERING */
-    display: flex;              /* Gør body til flex container */
-    justify-content: center;    /* Center horisontalt */
-    align-items: center;        /* Center vertikalt */
-    min-height: 100vh;          /* Sørger for, at body fylder hele højden */
-    flex-direction: column;     /* Sørger for, at elementer stables lodret */
-    text-align: center;         /* Valgfrit: centrerer tekst inde i elementer */
+  /*FOR CENTRERING */
+  display: flex;              /* Gør body til flex container */
+  justify-content: center;    /* Center horisontalt */
+  align-items: center;        /* Center vertikalt */
+  min-height: 100vh;          /* Sørger for, at body fylder hele højden */
+  flex-direction: column;     /* Sørger for, at elementer stables lodret */
+  text-align: center;         /* Valgfrit: centrerer tekst inde i elementer */
 }
 
 /* ################################# */
@@ -89,20 +68,7 @@ body {
 /* ################################# */
 
 h1, h2, h3 {
-  margin-top: 0; /* Fjern ekstra topafstand */
-}
-
-/* ################################# */
-/*            KORT STYLING           */
-/* ################################# */
-
-.card {
-  background: var(--card); /* Variabel styret baggrund */
-  color: var(--card-foreground); /* Variabel styret tekstfarve */
-  padding: 20px; /* Indre afstand */
-  border: 1px solid var(--border); /* Kantfarve følger tema */
-  border-radius: var(--radius); /* Runde hjørner */
-  margin-top: 15px;
+  margin-top: 0; /* Fjern ekstra topafstand på overskrifter */
 }
 
 /* ################################# */
@@ -123,6 +89,10 @@ button {
 button:hover {
   opacity: 0.9; /* Lidt visuelt feedback */
 }
+
+/* ################################# */
+/*           UR                      */
+/* ################################# */
 
 #clock {
     position: fixed;                     /* altid fast i hjørnet */
@@ -231,7 +201,7 @@ button:hover {
 /*           FARVETEMAER             */
 /* ################################# */
 
-/*Light/Dark knapper (jeg ville gerne have en anden btn til dem 😃)*/
+/*Light/Dark knapper*/
 .mode-btn {
   padding: 6px 24px;
   font-size: 18px;
@@ -253,7 +223,7 @@ button:hover {
   flex-direction: column;
   align-items: flex-end;
 }
-/* Pallete emoji/knappen (Colortheme)*/
+/* Pallete knappen (Colortheme)*/
 #theme-btn {
   background: var(--primary);
   color: var(--primary-foreground);
@@ -264,39 +234,38 @@ button:hover {
   font-size: 20px;
 }
 
-/* Fandt lige ud af at når man trykker på farvetema knappen altid sort, må blive fixet på et andet tidspunkt*/
-
+/*Knappernes farve i Tema dropdown (hentes fra script.js)*/
 .default{
-  background-color: #d8bfd8 !important;
+  background-color: #d8bfd8;
 }
 
 .blue{
-  background-color: lightblue !important;
-  --foreground: #ffffff;
-  --primary-foreground: #ffffff !important;
+  background-color: lightblue;
 }
 
 .green{
-  background-color: lightseagreen !important;
+  background-color: lightseagreen;
 }
 
 .grey{
-  background-color: silver !important;
+  background-color: silver;
 }
 
 .beige{
-  background-color: #d4b895 !important;
+  background-color: #d4b895;
 }
 
 /*Knapperne inde i containeren*/
 .color-button{
   height: 36px;
   width: 36px;
-  border-radius: 10px !important;
-  padding: 0 !important;
+  border-radius: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
 }
 
-/* Placering af container på siden*/
+/* Placering af knapperne inde i dropdown (afstand i mellem)*/
 .color-container{
   display: flex;
   flex-direction: row;
@@ -333,16 +302,12 @@ button:hover {
 }
 
 .player {
-    
-  --background: #0a0a0a;
-  --foreground: #ffffff;
     width: 350px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
-   
+    margin-top: 50px;  
 }
 
 .cover {
@@ -428,6 +393,7 @@ button:hover {
     font-size: 18px;
 }
 
+/* styrrer længde på volume bar*/
 #volume {
     flex: 1;
 }
@@ -443,9 +409,20 @@ button:hover {
 #progress-bar{
   width: 100%;
 }
+
 .progress input[type=range] {
     flex: 1; 
 }
+
+/* Skift farve på afspilleren med sekunder og farve på lyd*/
+#progress-bar, #volume {
+    accent-color: var(--primary); /* knob følger tema */
+}
+
+/* ################################# */
+/*       NEXT TRACK STARTER HER      */
+/* ################################# */
+
 
 /* Her starter kassen Listen af Next Track er inde i*/
 .next-track { 
@@ -459,11 +436,10 @@ button:hover {
     padding: 0;  
 }
 
-.next-track ul li { /* sangene i listen */
+.next-track ul li { /* Stregen i mellem sangene i listen */
     padding: 6px 0;
     border-bottom: 1px solid #ddd;
 }
-/* Her starter inholdet i kassen*/
 
 .queue-cover {
     width: 40px;
@@ -484,16 +460,13 @@ button:hover {
 .queue-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    /* flex-direction: column; titel over artist virker ikk :( */ 
-    
+    align-items: flex-start;    
 }
 
 .queue-title {
     font-size: 12px;
     font-weight: bold;
     margin: 0px;
-
 }
 
 .queue-artist {
@@ -502,14 +475,13 @@ button:hover {
     margin-top: 2px;
 }
 
-/* Til hvor queue ikonet placeres, og et gap mellem de to men ved ikke om det gør noget den er der?*/
-
+/* Til hvor queue ikonet placeres*/
 .Queue-container {
     display: flex;
     gap: 6px; /* lille afstand mellem ikon og tekst */
 }
 
-.next-track h4 { /* hovedet */
+.next-track h4 { /* hovedet ("Up Next")*/
     margin-top: 0;
     margin-bottom: 15px;
 }
@@ -517,7 +489,6 @@ button:hover {
 /* ################################# */
 /*    MOBILVENLIGT LAYOUT (TOP PADDING) */
 /* ################################# */
-
 
 @media (max-width: 600px) {
 
