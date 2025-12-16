@@ -5,6 +5,6 @@ const menu = document.getElementById("theme-dropdown");
 
 // Toggle dropdown
 btn.addEventListener("click", () => { 
-    console.log("hahaha");
+    console.log("Toggle åbner");
     menu.classList.toggle("hidden");
 });

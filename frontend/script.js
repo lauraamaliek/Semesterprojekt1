@@ -63,13 +63,6 @@ function initThemeDropdown() {
     btn.addEventListener("click", () => {
         menu.classList.toggle("hidden");
     });
-
-    // Luk dropdown hvis man klikker udenfor
-    document.addEventListener("click", (e) => {
-        if (!menu.classList.contains(hidden) && !menu.contains(e.target) && e.target !== btn) {
-            menu.classList.add("hidden");
-        }
-    });
 }
 
 // ####################################################
@@ -95,7 +88,7 @@ fetch("/colortheme.html")
     import("/colortheme.js");
   });
 
-  // Farve tema på knapperne når man trykker på dem (Det virker nu 😃)
+  // Farve tema på knapperne når man trykker på dem 
 
   function setTheme(color) {
     const root = document.documentElement;
@@ -125,16 +118,7 @@ fetch("/colortheme.html")
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("selectedTheme");
-
-    if (savedTheme) {
-        setTheme(savedTheme);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
     const savedMode = localStorage.getItem("mode");
-
     if (savedMode === "dark") {
         document.documentElement.classList.add("dark");
         isDarkMode = true;

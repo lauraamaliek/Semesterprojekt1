@@ -11,20 +11,12 @@ await db.query(`drop table if exists song_mood,
 	preferences,
 	tracks,
 	moods,
-	activities,
-	users
+	activities
 	`);
 
 console.log('All tables dropped.');
 
 console.log('Recreating tables...');
-
-await db.query(`
-    create table users (
-        id bigint primary key,
-	    name text not null
-    )
-`);
 
 await db.query(`
     create table activities (

@@ -1,7 +1,5 @@
 import express from 'express';
-
 import { connect } from '../db/connect.js';
-
 
 
 const db = await connect();
@@ -15,13 +13,11 @@ server.use(onEachRequest);
 
 server.get('/api/moods/:activityID', OnGetMoodsOnActivty); // Når klikker på en aktivitet (henter moods)
 server.get('/api/activity/:activityID', getActivityId); //aktivitetsnavn på mood-siden 
-server.get('/api/activities', getAllActivities); //endpoint som henter alle aktiviteter, bruges ikke lige nu
 server.get('/api/activities_priorities', getAllActivities2); //endpoint som henter alle aktiviteter i prioriteret rækkefølge 
 server.get('/api/moods', getAllMoods);
-server.get('/api/tracks-by-moods', getTracksByMoods); //bliver ikke brugt, men måske god at have
 server.post('/api/tracks-by-moods-weighted', getTracksByMoodsWeighted); //prioriterer sange som hører til mere end 1 valgt mood 
 
-
+//GET henter data POST sender datta
 
 server.listen(port, onServerReady);
 
@@ -35,7 +31,7 @@ async function OnGetMoodsOnActivty(request, response) { //Functionen der skal he
         JOIN mood_activity ON moods.id = mood_activity.mood_id
         WHERE mood_activity.activity_id = $1 
         `,[activity]); 
-    response.json(moods.rows); // hvorfor .rows?
+    response.json(moods.rows); // rows for at slippe for unødig meta data, og derfor kun få inholdet vi skal bruge
 } 
 // $ bruges som en placeholder til en værdi i arrayet efter SQL-strengen, her er det den første værdi i arrayet [activities]
 
@@ -50,15 +46,7 @@ async function getActivityId(request, response) {
     response.json(result.rows[0]);
 }
 
-//giver alle aktiviteter, så de kan blive til knapper 
-async function getAllActivities(request, response) {
-    const result = await db.query(`
-        SELECT *
-        FROM activities
-        ORDER BY id ASC`);
-    response.json(result.rows);
-}
-
+//giver alle aktiviteter, så de kan blive til knapper (sortere efter tidspunkt)
 async function getAllActivities2(request, response){
     const hour = new Date().getHours();
 
@@ -84,35 +72,7 @@ async function getAllMoods(request,response){
     response.json(moods.rows);
 }
 
-
-
-//begyndelse på tracks-by-moods, altså at sange hentes efter hvilke moods der er valgt
-//bruges ikke lige nu 
-async function getTracksByMoods(request, response) {
-    try {//bruges for at fange evt. fejl og derved undgå at siden crasher 
-        const { selectedMoods } = request.body; // forventer array af mood IDs fra frontend
-
-        if (!selectedMoods || selectedMoods.length === 0) {
-            return response.json([]); // ingen moods valgt
-        }
-
-        // Dynamisk placeholders til SQL
-        const placeholders = selectedMoods.map((_, i) => `$${i + 1}`).join(',');
-
-        const query = `
-            SELECT DISTINCT t.id, t.title, t.artist, t.duration
-            FROM tracks t
-            JOIN song_mood sm ON t.id = sm.song_id
-            WHERE sm.mood_id IN (${placeholders})
-        `;
-
-        const result = await db.query(query, selectedMoods);
-        response.json(result.rows); // returner listen af tracks
-    } catch (err) {
-        console.error(err);
-        response.status(500).json({ error: 'Server error' });
-    }
-}
+//tracks-by-moods, altså at sange hentes efter hvilke moods der er valgt
 
 // denne funktion vægter sangene, så dem som findes blandt flere af de valgte moods prioriteres højere
 
@@ -120,11 +80,11 @@ async function getTracksByMoodsWeighted(request, response) {
     try {
         const { selectedMoods } = request.body; // forventer array af mood IDs fra frontend
 
-        if (!selectedMoods || selectedMoods.length === 0) {
+        if (!selectedMoods || selectedMoods.length === 0) { //! betyder "not" "====" tjekker at værdi og type er det samme på begge sider, "||" = "or"
             return response.json([]); // ingen moods valgt
         }
 
-        const placeholders = selectedMoods.map((_, i) => `$${i + 1}`).join(',');
+        const placeholders = selectedMoods.map((_, i) => `$${i + 1}`).join(','); // .join er lidt det samme som "forEach"
 
         // Denne query tæller hvor mange gange hvert track matcher moods og sorterer efter antal matches
         const query = `
@@ -137,9 +97,8 @@ async function getTracksByMoodsWeighted(request, response) {
         `;
         // Konverter til tal her:
         const result = await db.query(query, selectedMoods.map(Number));
-        //const result = await db.query(query, selectedMoods);
         response.json(result.rows); // returner tracks med de mest matchende først
-    } catch (err) {
+    } catch (err) { //Hvis try ikke virker
         console.error(err);
         response.status(500).json({ error: 'Server error' });
     }
@@ -147,7 +106,6 @@ async function getTracksByMoodsWeighted(request, response) {
 
 
 //Mikkels kode som SKAL være her for at det fungerer 
-
 function onEachRequest(request, response, next) {
     console.log(new Date(), request.method, request.url);
     next();

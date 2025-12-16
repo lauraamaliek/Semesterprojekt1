@@ -2,7 +2,7 @@
 async function loadMoods() {
     console.log("Loading moods...");
 
-    const activity = JSON.parse(localStorage.getItem("selectedActivity"));
+    const activity = JSON.parse(localStorage.getItem("selectedActivity")); // parse = læses som JSON
     const activityId = activity.id;
 
     // Hent alle moods
@@ -14,7 +14,7 @@ async function loadMoods() {
     const activityMoods = await activityMoodsResponse.json();
     const defaultMoodIDs = new Set(activityMoods.map(m => m.id));
 
-    // ⬇ NYT: load moods KUN for denne aktivitet
+    // load moods KUN for denne aktivitet
     const storageKey = `selectedMoods_${activityId}`;
     const savedMoods = JSON.parse(localStorage.getItem(storageKey) || "null");
 
@@ -37,7 +37,7 @@ async function loadMoods() {
         return a.id - b.id;
     });
 
-    // Byg UI
+    // Byg knapper
     const container = document.getElementById("mood-button-row");
     container.innerHTML = "";
 
@@ -81,12 +81,10 @@ function updateContinueButton() {
         continueBtn.textContent = "Select moods to continue";
         continueBtn.disabled = true;
         continueBtn.classList.add("disabled");
-        continueBtn.setAttribute("aria-disabled", "true");
     } else {
         continueBtn.textContent = `Continue with ${selectedCount} mood${selectedCount > 1 ? "s" : ""}`;
         continueBtn.disabled = false;
         continueBtn.classList.remove("disabled");
-        continueBtn.setAttribute("aria-disabled", "false");
     }
 
     // Valgte moods, gemmes per aktivitet 

@@ -1,6 +1,5 @@
 let currentTrackIndex = 0; //variablen currentTrackIndex sættes til 0, bruges til at holde styr på hvilken sang der spilles nu
-let currentTracklist = []; //der oprettes et tomt array med navnet currentTracklist, her indsættes sange fra valgte moods
-let currentPlayingTrack = null; //skal indeholde den sang som spiller nu 
+let currentTracklist = []; //der oprettes et tomt array med navnet currentTracklist, her indsættes sange fra valgte moods 
 let currentSecond = 0; //variablen currentSecond sættes til 0, bruges til progressbaren
 let currentTrackDuration = 0; //variablen currentTrackDuration bruges til progressbar
 let progressInterval = null; //bruges til progressbaren, gør så den kan stoppes igen
@@ -72,7 +71,7 @@ async function loadTracksForSelectedMoods() {
     }//hvis en fejl fanges sendes en meddelelsen
 }
 
-//omregner duration fra "mm:ss" til sekunder i tal 
+//omregner duration fra "mm:ss" til sekunder i hele tal 
 function durationToSeconds(durationString) {
     if (typeof durationString !== "string") return 0;//spørger om durationString er en string, hvis ikke så skriver den 0
 
@@ -113,7 +112,7 @@ function startProgressBar() {
 
     if (currentSecond >= currentTrackDuration) {//hvis sangen er slut, intervallet stopper og næste sang startes
         clearInterval(progressInterval);
-        playNextTrack();   // 🎉 AUTO NEXT TRACK
+        playNextTrack();   // AUTO NEXT TRACK
         }  
     }, 1000); //hvorfor 1000-> så funktionen kører hvert 1000 millisekund
 
@@ -131,8 +130,8 @@ function updatePlayer(track) {
     const progressBar = document.getElementById("progress-bar");
     const albumImg = document.getElementById("album-img");
 
-    if (titleElement) titleElement.textContent = track.title || "Ukendt titel";//hvis titel mangler
-    if (artistElement) artistElement.textContent = track.artist || "Ukendt kunstner";//hvis kunstner mangler
+    if (titleElement) titleElement.textContent = track.title || "Unknown title";//hvis titel mangler
+    if (artistElement) artistElement.textContent = track.artist || "Unknown artist";//hvis kunstner mangler
 
     const durationSeconds = durationToSeconds(track.duration);
 
@@ -145,7 +144,7 @@ function updatePlayer(track) {
 
     currentTrackDuration = durationSeconds;
 
-  // 🔥 Dynamisk album-cover
+  // Dynamisk album-cover
     albumImg.src = `albumPhotos/${track.id}.jpg`; //fortæller at albumImg skal være indsætte jpg, som passer til track.id
 
     // Hvis fil mangler – fallback
@@ -163,7 +162,7 @@ function playNextTrack() {
     if (currentTrackIndex < currentTracklist.length - 1) {
         currentTrackIndex++;//hvis sangen er slut og der er en næste --> afspil denne 
     } else {//hvis køen er slut starter den forfra
-        // Hvis du vil loope playlisten:
+        // Playlisten looper:
         currentTrackIndex = 0; 
     }
 
@@ -216,9 +215,9 @@ function updateQueue(){
         queueList.appendChild(li);
 
     });
-} //Tilføjede denne linje "<img class="queue-cover" src="albumPhotos/${track.id}.jpg" for at få det til at virke ved listen også
+}
 
-//Function så Play/Pause knap/ikon virker
+//Const så Play/Pause knap/ikon virker
 const playBtn = document.getElementById("play-btn");
 const playIcon = document.getElementById("play-icon");
 

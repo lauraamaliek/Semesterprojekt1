@@ -43,4 +43,4 @@ async function getAllActivities2() {
     }
 }
 
-getAllActivities2()
+getAllActivities2() // Køre funktion
